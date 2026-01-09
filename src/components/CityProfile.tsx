@@ -54,7 +54,6 @@ export default function CityProfile() {
         />
       </div>
 
-
       {/* Main Content Container */}
       <div
         className="absolute flex flex-col items-center"

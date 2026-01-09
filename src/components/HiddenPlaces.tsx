@@ -94,7 +94,27 @@ export default function HiddenPlaces() {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, #132019 0%, rgba(19, 32, 25, 0.3) 30%, rgba(19, 32, 25, 0.3) 70%, #132019 100%)',
+          background: 'linear-gradient(180deg, #132019 0%, rgba(19, 32, 25, 0.3) 30%, rgba(19, 32, 25, 0.3) 60%, #132019 100%)',
+        }}
+      />
+
+      {/* Bottom Gradient - connects with About cloud border */}
+      <div
+        className="absolute left-0 right-0 bottom-0"
+        style={{
+          height: '200px',
+          background: 'linear-gradient(0deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
+          zIndex: 5,
+        }}
+      />
+
+      {/* Extra bottom solid for seamless cloud connection */}
+      <div
+        className="absolute left-0 right-0 bottom-0"
+        style={{
+          height: '60px',
+          background: '#132019',
+          zIndex: 6,
         }}
       />
 

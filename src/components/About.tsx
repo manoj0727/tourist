@@ -9,30 +9,49 @@ export default function About() {
       className="relative overflow-hidden mx-auto"
       style={{
         width: '1440px',
-        height: '1282px',
+        height: '1450px',
         background: '#F5F2E9',
       }}
     >
-      {/* Top Vector Shape */}
+      {/* Dark background behind cloud - matches HiddenPlaces bottom */}
       <div
-        className="absolute"
+        className="absolute left-0 right-0 top-0"
         style={{
-          left: 0,
-          right: 0,
-          top: 0,
-          height: '92px',
-          background: '#F5F2E9',
+          height: '100px',
+          background: '#132019',
+          zIndex: 1,
         }}
       />
+
+      {/* Cloud Border - Vector shape */}
+      <div
+        className="relative w-full"
+        style={{
+          height: '100px',
+          zIndex: 10,
+        }}
+      >
+        <Image
+          src="/images/bg15.png"
+          alt="Cloud border"
+          fill
+          className="object-cover"
+          style={{
+            objectFit: 'cover',
+            objectPosition: 'bottom',
+          }}
+        />
+      </div>
+
 
       {/* Background Pattern */}
       <div
         className="absolute"
         style={{
           width: '1732px',
-          height: '1156px',
+          height: '1200px',
           left: 'calc(50% - 1732px/2)',
-          top: '-43px',
+          top: '100px',
           opacity: 0.14,
         }}
       >
@@ -43,18 +62,6 @@ export default function About() {
           className="object-cover"
         />
       </div>
-
-      {/* Bottom Vector Shape */}
-      <div
-        className="absolute"
-        style={{
-          left: 0,
-          right: 0,
-          bottom: 0,
-          height: '85px',
-          background: '#F5F2E9',
-        }}
-      />
 
       {/* About 1 - Welcome to Mount Abu (Left Text, Right Image) */}
       <motion.div
@@ -67,7 +74,7 @@ export default function About() {
           width: '1216px',
           height: '609px',
           left: '123px',
-          top: '115px',
+          top: '195px',
         }}
       >
         {/* Left Content */}
@@ -188,7 +195,7 @@ export default function About() {
           width: '1215px',
           height: '598px',
           left: '106px',
-          top: '585px',
+          top: '720px',
         }}
       >
         {/* Left Image */}

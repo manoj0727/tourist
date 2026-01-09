@@ -49,6 +49,16 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
 
+      {/* Bottom Gradient - connects smoothly with ImageSlider */}
+      <div
+        className="absolute left-0 right-0 bottom-0"
+        style={{
+          height: '280px',
+          background: 'linear-gradient(0deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
+          zIndex: 5,
+        }}
+      />
+
       {/* Main Hero Content - Left Aligned */}
       <div className="absolute z-10" style={{ left: '80px', top: '280px' }}>
         {/* Decorative Line */}
@@ -211,14 +221,13 @@ const Hero = () => {
         </h2>
       </motion.div>
 
-      {/* Scroll Indicator */}
+      {/* Explore Indicator - Center Bottom */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute z-10"
+        className="absolute z-10 left-1/2 -translate-x-1/2"
         style={{
-          left: '80px',
           bottom: '60px',
         }}
       >
@@ -237,7 +246,7 @@ const Hero = () => {
               color: 'rgba(255,255,255,0.5)',
             }}
           >
-            Scroll
+            Explore
           </span>
           <div
             style={{

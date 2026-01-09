@@ -46,9 +46,9 @@ export default function ImageSlider() {
     if (isHovered) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 4000);
     return () => clearInterval(interval);
-  }, [isHovered]);
+  }, [isHovered, activeIndex]);
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
@@ -72,8 +72,25 @@ export default function ImageSlider() {
         <div className="absolute inset-0" style={{ background: 'rgba(19, 32, 25, 0.5)' }} />
       </div>
 
-      {/* Gradients */}
-      <div className="absolute top-0 left-0 right-0 h-[320px]" style={{ background: 'linear-gradient(180deg, #132019 0%, transparent 100%)' }} />
+      {/* Top Gradient - connects with Hero bottom */}
+      <div
+        className="absolute top-0 left-0 right-0"
+        style={{
+          height: '350px',
+          background: 'linear-gradient(180deg, #132019 0%, rgba(19, 32, 25, 0.6) 40%, rgba(19, 32, 25, 0) 100%)',
+        }}
+      />
+
+      {/* Extra top solid color for seamless connection */}
+      <div
+        className="absolute top-0 left-0 right-0"
+        style={{
+          height: '40px',
+          background: '#132019',
+        }}
+      />
+
+      {/* Bottom Gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-[220px]" style={{ background: 'linear-gradient(0deg, #132019 0%, transparent 100%)' }} />
 
       {/* Header */}
