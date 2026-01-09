@@ -16,7 +16,7 @@ export default function AppDownload() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/12-1.jpg"
+          src="/images/bg12.jpg"
           alt="Background"
           fill
           className="object-cover"
@@ -33,12 +33,12 @@ export default function AppDownload() {
         }}
       />
 
-      {/* Bottom Gradient */}
+      {/* Bottom Gradient - connects with ConnectWithUs top */}
       <div
         className="absolute left-0 right-0 bottom-0"
         style={{
-          height: '254px',
-          background: 'linear-gradient(0deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
+          height: '280px',
+          background: 'linear-gradient(0deg, #121E17 0%, rgba(18, 30, 23, 0) 100%)',
         }}
       />
 
@@ -48,7 +48,7 @@ export default function AppDownload() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="absolute flex items-center justify-center"
+        className="absolute"
         style={{
           width: '1280px',
           height: '385px',
@@ -57,7 +57,6 @@ export default function AppDownload() {
           background: '#F5F2E9',
           borderRadius: '24px',
           overflow: 'hidden',
-          gap: '118px',
         }}
       >
         {/* Left Gradient Fade */}
@@ -80,15 +79,15 @@ export default function AppDownload() {
           }}
         />
 
-        {/* Left Content */}
+        {/* Left Content - Positioned absolutely */}
         <div
-          className="flex flex-col justify-center items-start"
+          className="absolute flex flex-col justify-center items-start"
           style={{
             width: '436px',
-            height: '297px',
+            left: '80px',
+            top: '44px',
             gap: '28px',
             zIndex: 5,
-            paddingLeft: '80px',
           }}
         >
           {/* Text Content */}
@@ -169,131 +168,53 @@ export default function AppDownload() {
               }}
             >
               {/* Apple Logo */}
-              <svg width="70" height="85" viewBox="0 0 70 85" fill="none">
-                <path d="M57.5 45C57.5 36 49 30 49 30C49 30 50 24 47 18C44 12 38 10 38 10C38 10 35 17 35 24C35 31 38 35 38 35C38 35 30 38 25 47C20 56 22 68 22 68C22 68 26 74 33 78C40 82 46 80 46 80C46 80 52 78 56 72C60 66 60 58 60 58C60 58 57.5 54 57.5 45Z" fill="#000"/>
-                <path d="M38 0C38 0 32 2 32 10C32 18 38 22 38 22C38 22 44 20 44 12C44 4 38 0 38 0Z" fill="#000"/>
+              <svg width="61" height="75" viewBox="0 0 61 75" fill="none">
+                <path d="M50.4 39.5c-.1-8.7 7.1-12.9 7.4-13.1-4-5.9-10.3-6.7-12.5-6.8-5.3-.5-10.4 3.1-13.1 3.1-2.7 0-6.9-3.1-11.3-3-5.8.1-11.2 3.4-14.2 8.6-6.1 10.5-1.6 26.1 4.4 34.6 2.9 4.2 6.4 8.9 10.9 8.7 4.4-.2 6.1-2.8 11.4-2.8 5.3 0 6.9 2.8 11.5 2.7 4.7-.1 7.7-4.3 10.6-8.5 3.3-4.9 4.7-9.6 4.8-9.8-.1-.1-9.2-3.5-9.3-14 0-8.6 7-12.7 7.3-12.9-4-5.9-10.2-6.6-12.4-6.7l.5-.1zM41.1 13.1c2.4-2.9 4-6.9 3.6-10.9-3.5.1-7.7 2.3-10.2 5.2-2.2 2.6-4.2 6.7-3.7 10.7 3.9.3 7.9-2 10.3-5z" fill="#000"/>
               </svg>
             </motion.div>
           </div>
         </div>
 
-        {/* Right Side - Phone Mockup */}
+        {/* Right Side - Phone Mockup Image */}
         <div
-          className="relative flex items-center justify-center"
+          className="absolute"
           style={{
-            width: '451px',
+            width: '728px',
             height: '385px',
+            right: '-100px',
+            top: 0,
           }}
         >
-          {/* Background Image - Hand with Phone */}
-          <div
-            className="absolute"
+          {/* Phone Image */}
+          <Image
+            src="/images/12-1.jpg"
+            alt="Hand holding smartphone"
+            fill
+            className="object-cover"
             style={{
-              width: '728px',
-              height: '385px',
-              left: '-140px',
-              top: 0,
+              objectPosition: 'center',
+            }}
+          />
+
+          {/* Logo Overlay - positioned on phone screen area */}
+          <div
+            className="absolute flex items-center justify-center"
+            style={{
+              width: '104px',
+              height: '220px',
+              left: '233px',
+              top: '128px',
+              background: 'rgba(219, 214, 214, 0.75)',
+              borderRadius: '12px',
             }}
           >
-            <Image
-              src="/images/12-1.jpg"
-              alt="Hand holding smartphone"
-              fill
-              className="object-cover"
-              style={{
-                objectPosition: 'center',
-              }}
-            />
-          </div>
-
-          {/* Phone Screen Overlay */}
-          <div
-            className="absolute overflow-hidden"
-            style={{
-              width: '122px',
-              height: '261px',
-              left: '183px',
-              top: '44px',
-              background: '#FFFFFF',
-              borderRadius: '16px',
-            }}
-          >
-            {/* App Preview with Logo */}
-            <div
-              className="flex flex-col items-center justify-center h-full"
-              style={{
-                background: 'linear-gradient(180deg, #1a3a2a 0%, #0d1f15 100%)',
-                padding: '20px',
-              }}
-            >
-              <div className="relative" style={{ width: '60px', height: '68px' }}>
-                <Image
-                  src="/nav_img.png"
-                  alt="Nagar Palika Logo"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <p
-                className="text-center mt-3"
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontSize: '8px',
-                  fontWeight: 600,
-                  color: '#D4AF37',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
-                }}
-              >
-                Nagar Palika
-              </p>
-              <p
-                className="text-center"
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  fontSize: '7px',
-                  fontWeight: 500,
-                  color: '#F5F2E9',
-                  textTransform: 'uppercase',
-                }}
-              >
-                Mount Abu
-              </p>
-
-              {/* Mini Service Icons */}
-              <div className="flex flex-wrap justify-center gap-2 mt-4">
-                {['Token', 'Complaint', 'Certificate', 'Alerts'].map((service) => (
-                  <div
-                    key={service}
-                    className="flex flex-col items-center"
-                    style={{
-                      width: '40px',
-                      padding: '4px',
-                      background: 'rgba(212, 175, 55, 0.1)',
-                      borderRadius: '4px',
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: '16px',
-                        height: '16px',
-                        background: '#D4AF37',
-                        borderRadius: '4px',
-                        marginBottom: '2px',
-                      }}
-                    />
-                    <span
-                      style={{
-                        fontSize: '5px',
-                        color: '#F5F2E9',
-                        textAlign: 'center',
-                      }}
-                    >
-                      {service}
-                    </span>
-                  </div>
-                ))}
-              </div>
+            <div className="relative" style={{ width: '70px', height: '80px' }}>
+              <Image
+                src="/nav_img.png"
+                alt="Nagar Palika Logo"
+                fill
+                className="object-contain"
+              />
             </div>
           </div>
         </div>

@@ -10,6 +10,10 @@ import DigitalServices from '@/components/DigitalServices';
 import InfoGuidelines from '@/components/InfoGuidelines';
 import Tenders from '@/components/Tenders';
 import LeadershipMessages from '@/components/LeadershipMessages';
+import AppDownload from '@/components/AppDownload';
+import ConnectWithUs from '@/components/ConnectWithUs';
+import ContactDiary from '@/components/ContactDiary';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -26,6 +30,10 @@ export default function Home() {
       <InfoGuidelines />
       <Tenders />
       <LeadershipMessages />
+      <AppDownload />
+      <ConnectWithUs />
+      <ContactDiary />
+      <Footer />
     </main>
   );
 }
