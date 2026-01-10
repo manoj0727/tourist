@@ -31,7 +31,7 @@ const Hero2 = () => {
         className="absolute text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[100px]"
         style={{
           zIndex: 15,
-          top: '15%',
+          top: '10%',
           left: '22%',
           fontFamily: "'Montserrat', sans-serif",
           fontWeight: 500,
@@ -69,7 +69,7 @@ const Hero2 = () => {
         className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
         style={{
           zIndex: 15,
-          top: '15%',
+          top: '5%',
           transition: 'none',
         }}
       >

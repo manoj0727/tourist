@@ -47,7 +47,7 @@ const Hero = () => {
         style={{
           zIndex: 15,
           top: '10%',
-          left: '22%',
+          left: '20%',
           fontFamily: "'Montserrat', sans-serif",
           fontWeight: 100,
           color: '#F7BE03',
