@@ -107,7 +107,7 @@ const Navbar = () => {
         className="fixed top-0 left-0 right-0 z-50"
       >
         <div
-          className="w-full border-b border-white/20 h-16 sm:h-20 md:h-[100px] lg:h-[122px] px-4 sm:px-6 md:px-12 lg:px-20"
+          className="w-full border-b border-white/20 h-14 sm:h-16 md:h-[70px] lg:h-[80px] px-4 sm:px-6 md:px-12 lg:px-20"
           style={{
             background: 'rgba(0, 0, 0, 0.2)',
             backdropFilter: 'blur(8px)',
@@ -204,7 +204,7 @@ const Navbar = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={() => setIsMenuOpen(false)}
-              className="fixed z-30 left-0 right-0 bottom-0 top-16 sm:top-20 md:top-[100px] lg:top-[122px]"
+              className="fixed z-30 left-0 right-0 bottom-0 top-14 sm:top-16 md:top-[70px] lg:top-[80px]"
               style={{
                 background: 'rgba(0, 0, 0, 0.25)',
                 backdropFilter: 'blur(5px)',
@@ -217,7 +217,7 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed z-40 right-0 bottom-0 top-16 sm:top-20 md:top-[100px] lg:top-[122px] w-full sm:w-[85%] md:w-[70%] lg:w-[50%] p-6 sm:p-8 md:p-10 lg:p-[60px] flex flex-col items-start gap-4 sm:gap-5 md:gap-6 overflow-y-auto"
+              className="fixed z-40 right-0 bottom-0 top-14 sm:top-16 md:top-[70px] lg:top-[80px] w-full sm:w-[85%] md:w-[70%] lg:w-[50%] p-6 sm:p-8 md:p-10 lg:p-[60px] flex flex-col items-start gap-4 sm:gap-5 md:gap-6 overflow-y-auto"
               style={{
                 background: 'rgba(19, 32, 25, 0.95)',
                 backdropFilter: 'blur(2px)',

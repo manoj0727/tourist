@@ -46,10 +46,10 @@ const Hero = () => {
         className="absolute text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[100px]"
         style={{
           zIndex: 15,
-          top: '15%',
+          top: '10%',
           left: '22%',
           fontFamily: "'Montserrat', sans-serif",
-          fontWeight: 500,
+          fontWeight: 100,
           color: '#F7BE03',
           textShadow: '3px 2px 0px rgba(0, 0, 0, 0.5)',
           lineHeight: '1',
@@ -65,7 +65,7 @@ const Hero = () => {
         className="absolute text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[60px]"
         style={{
           zIndex: 30,
-          top: '40%',
+          top: '55%',
           right: '20%',
           fontFamily: "'Montserrat', sans-serif",
           fontWeight: 1000,
@@ -84,7 +84,7 @@ const Hero = () => {
         className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
         style={{
           zIndex: 15,
-          top: '22%',
+          top: '5%',
           transition: 'none',
         }}
       >

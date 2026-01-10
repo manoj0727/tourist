@@ -183,17 +183,12 @@ const slides = [
   {
     id: 3,
     background: '/images/h3.jpg',
-    foreground: '/images/h3-2.png',
+    foreground: null,
     altBg: 'Mount Abu Background 3',
     altFg: 'Mount Abu Foreground 3',
     topLeftText: 'Majestic',
     topRightText: 'Wildlife Sanctuary',
-    fgStyle: {
-      width: '100vw',
-      height: '100px',
-      top: '39%',
-      left: '50%',
-    },
+    fgStyle: null,
   },
 ];
 
@@ -287,35 +282,37 @@ const HeroSlider = () => {
       </div>
 
       {/* Foreground Image - Animated with same timing, higher z-index to cover Mount Abu */}
-      <AnimatePresence mode="sync">
-        <motion.div
-          key={`fg-${currentSlide}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
-          className="absolute pointer-events-none"
-          style={{
-            zIndex: 10,
-            width: slides[currentSlide].fgStyle.width,
-            height: slides[currentSlide].fgStyle.height,
-            ...(slides[currentSlide].fgStyle.bottom && { bottom: slides[currentSlide].fgStyle.bottom }),
-            ...(slides[currentSlide].fgStyle.top && { top: slides[currentSlide].fgStyle.top }),
-            left: slides[currentSlide].fgStyle.left,
-            transform: 'translateX(-50%)',
-          }}
-        >
-          <Image
-            src={slides[currentSlide].foreground}
-            alt={slides[currentSlide].altFg}
-            fill
-            className={currentSlide === 2 ? "object-cover object-top" : "object-cover object-bottom"}
-            priority
-            sizes="100vw"
-            quality={90}
-          />
-        </motion.div>
-      </AnimatePresence>
+      {slides[currentSlide].foreground && slides[currentSlide].fgStyle && (
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={`fg-${currentSlide}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
+            className="absolute pointer-events-none"
+            style={{
+              zIndex: 10,
+              width: slides[currentSlide].fgStyle!.width,
+              height: slides[currentSlide].fgStyle!.height,
+              ...('bottom' in slides[currentSlide].fgStyle! && { bottom: (slides[currentSlide].fgStyle as { bottom?: string }).bottom }),
+              ...('top' in slides[currentSlide].fgStyle! && { top: (slides[currentSlide].fgStyle as { top?: string }).top }),
+              left: slides[currentSlide].fgStyle!.left,
+              transform: 'translateX(-50%)',
+            }}
+          >
+            <Image
+              src={slides[currentSlide].foreground!}
+              alt={slides[currentSlide].altFg}
+              fill
+              className={currentSlide === 2 ? "object-cover object-top" : "object-cover object-bottom"}
+              priority
+              sizes="100vw"
+              quality={90}
+            />
+          </motion.div>
+        </AnimatePresence>
+      )}
 
       {/* Top Left Text - Positioned independently on the left (ABOVE foreground) */}
       <span
@@ -341,7 +338,7 @@ const HeroSlider = () => {
         className="absolute text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[60px]"
         style={{
           zIndex: 25,
-          top: '40%',
+          top: '55%',
           right: '20%',
           fontFamily: "'Montserrat', sans-serif",
           fontWeight: 1000,

@@ -69,7 +69,7 @@ const Hero3 = () => {
         className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
         style={{
           zIndex: 5,
-          top: '22%',
+          top: '15%',
           transition: 'none',
         }}
       >
@@ -94,29 +94,6 @@ const Hero3 = () => {
             Abu
           </span>
         </h1>
-      </div>
-
-      {/* Layer 3: Foreground Image (h3-2.png) - Overlaps Mount Abu text */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          zIndex: 20,
-          width: '120vw',
-          height: '180px',
-          top: '32%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-        }}
-      >
-        <Image
-          src="/images/h3-2.png"
-          alt="Mount Abu Foreground 3"
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="120vw"
-          quality={90}
-        />
       </div>
 
       {/* Gradient Overlays */}
