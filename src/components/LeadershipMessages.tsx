@@ -37,10 +37,8 @@ export default function LeadershipMessages() {
 
   return (
     <section
-      className="relative overflow-hidden mx-auto"
+      className="relative overflow-hidden mx-auto w-full max-w-[1440px] min-h-[700px] md:min-h-[929px] py-12 md:py-0"
       style={{
-        width: '1440px',
-        height: '929px',
         background: '#132019',
       }}
     >
@@ -91,14 +89,7 @@ export default function LeadershipMessages() {
 
       {/* Main Content */}
       <div
-        className="absolute flex flex-col items-center"
-        style={{
-          width: '1141px',
-          height: '682px',
-          left: 'calc(50% - 1141px/2)',
-          top: '140px',
-          gap: '80px',
-        }}
+        className="relative md:absolute flex flex-col items-center w-full max-w-[1141px] mx-auto px-4 sm:px-6 lg:px-8 md:px-0 md:left-1/2 md:-translate-x-1/2 md:top-[140px] gap-10 md:gap-[80px]"
       >
         {/* Header */}
         <motion.div
@@ -106,32 +97,22 @@ export default function LeadershipMessages() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col justify-center items-center"
-          style={{
-            width: '1141px',
-            gap: '26px',
-          }}
+          className="flex flex-col justify-center items-center w-full max-w-[1141px] gap-4 md:gap-[26px]"
         >
           <p
-            className="baron-neue"
+            className="baron-neue text-lg md:text-2xl text-center"
             style={{
-              fontSize: '24px',
               lineHeight: '24px',
-              textAlign: 'center',
               color: '#D4AF37',
             }}
           >
             Testimonials
           </p>
           <h2
+            className="text-2xl sm:text-3xl md:text-[40px] md:leading-[54px] text-center capitalize text-white"
             style={{
               fontFamily: "'Montserrat', sans-serif",
               fontWeight: 500,
-              fontSize: '40px',
-              lineHeight: '54px',
-              textAlign: 'center',
-              textTransform: 'capitalize',
-              color: '#FFFFFF',
             }}
           >
             Leadership messages
@@ -140,12 +121,7 @@ export default function LeadershipMessages() {
 
         {/* Speaker Content */}
         <div
-          className="flex flex-col items-center"
-          style={{
-            width: '1141px',
-            height: '484px',
-            gap: '60px',
-          }}
+          className="flex flex-col items-center w-full max-w-[1141px] gap-8 md:gap-[60px]"
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -154,46 +130,25 @@ export default function LeadershipMessages() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center"
-              style={{
-                width: '1141px',
-                height: '380px',
-                gap: '58px',
-              }}
+              className="flex flex-col md:flex-row items-center w-full max-w-[1141px] gap-8 md:gap-[58px]"
             >
               {/* Image Container */}
               <div
-                className="relative"
-                style={{
-                  width: '373px',
-                  height: '380px',
-                  flexShrink: 0,
-                }}
+                className="relative w-[280px] h-[290px] sm:w-[320px] sm:h-[330px] md:w-[373px] md:h-[380px] flex-shrink-0"
               >
                 {/* Golden Border Circle */}
                 <div
-                  className="absolute"
+                  className="absolute w-[270px] h-[270px] sm:w-[310px] sm:h-[310px] md:w-[360px] md:h-[360px] left-0 top-4 md:top-5 rounded-full"
                   style={{
-                    width: '360px',
-                    height: '360px',
-                    left: '0px',
-                    top: '20px',
                     border: '1.76px solid #D4AF37',
-                    borderRadius: '402px',
                   }}
                 />
 
                 {/* Gray Background Circle with CM Image */}
                 <div
-                  className="absolute"
+                  className="absolute w-[270px] h-[270px] sm:w-[310px] sm:h-[310px] md:w-[360px] md:h-[360px] left-2 sm:left-2.5 md:left-[13px] top-0 rounded-full overflow-hidden"
                   style={{
-                    width: '360px',
-                    height: '360px',
-                    left: '13px',
-                    top: '0px',
                     background: '#B7B5AF',
-                    borderRadius: '50%',
-                    overflow: 'hidden',
                   }}
                 >
                   <Image
@@ -210,37 +165,25 @@ export default function LeadershipMessages() {
 
               {/* Text Content */}
               <div
-                className="flex flex-col items-start"
-                style={{
-                  width: '710px',
-                  height: '320px',
-                  gap: '24px',
-                }}
+                className="flex flex-col items-center md:items-start w-full max-w-[710px] gap-4 md:gap-6"
               >
                 {/* Name and Designation */}
                 <div
-                  className="flex flex-col items-start"
-                  style={{
-                    gap: '12px',
-                  }}
+                  className="flex flex-col items-center md:items-start gap-2 md:gap-3"
                 >
                   <h3
-                    className="baron-neue"
+                    className="baron-neue text-2xl sm:text-[28px] md:text-[32px] leading-tight md:leading-[32px] text-center md:text-left"
                     style={{
-                      fontSize: '32px',
-                      lineHeight: '32px',
                       color: '#D4AF37',
                     }}
                   >
                     {currentLeader.name}
                   </h3>
                   <p
+                    className="text-base sm:text-lg md:text-xl leading-6 capitalize text-center md:text-left"
                     style={{
                       fontFamily: "'Montserrat', sans-serif",
                       fontWeight: 700,
-                      fontSize: '20px',
-                      lineHeight: '24px',
-                      textTransform: 'capitalize',
                       color: '#F5F2E9',
                     }}
                   >
@@ -250,13 +193,11 @@ export default function LeadershipMessages() {
 
                 {/* Message */}
                 <p
+                  className="text-sm sm:text-base md:text-xl leading-6 md:leading-7 w-full max-w-[710px] text-center md:text-left"
                   style={{
                     fontFamily: "'Montserrat', sans-serif",
                     fontWeight: 500,
-                    fontSize: '20px',
-                    lineHeight: '28px',
                     color: '#F5F2E9',
-                    width: '710px',
                   }}
                 >
                   {currentLeader.message}

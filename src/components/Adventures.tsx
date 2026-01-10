@@ -77,23 +77,13 @@ export default function Adventures() {
 
   return (
     <section
-      className="relative overflow-hidden mx-auto"
+      className="relative overflow-hidden mx-auto w-full max-w-[1440px] min-h-[700px] md:min-h-[850px] lg:min-h-[975px]"
       style={{
-        width: '1440px',
-        height: '975px',
         background: '#17261E',
       }}
     >
       {/* Background Image with Overlay */}
-      <div
-        className="absolute"
-        style={{
-          width: '1550.4px',
-          height: '974.61px',
-          left: 'calc(50% - 1550.4px/2 - 0.73px)',
-          top: 'calc(50% - 974.61px/2 - 0.19px)',
-        }}
-      >
+      <div className="absolute inset-0 w-full h-full">
         <Image
           src="/images/bg3.jpg"
           alt="Background"
@@ -109,383 +99,279 @@ export default function Adventures() {
       {/* Gradient Overlays */}
       {/* Top gradient */}
       <div
-        className="absolute"
+        className="absolute left-0 right-0 top-0 h-[150px] md:h-[212px]"
         style={{
-          width: '1441.25px',
-          height: '212.18px',
-          left: 'calc(50% - 1441.25px/2 - 0.73px)',
-          top: 0,
           background: 'linear-gradient(180deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
         }}
       />
       {/* Bottom gradient */}
       <div
-        className="absolute"
+        className="absolute left-0 right-0 bottom-0 h-[150px] md:h-[212px]"
         style={{
-          width: '1441.25px',
-          height: '212.18px',
-          left: 'calc(50% - 1441.25px/2 - 0.23px)',
-          bottom: 0,
           background: 'linear-gradient(0deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
         }}
       />
       {/* Left gradient */}
       <div
-        className="absolute"
+        className="absolute left-0 top-0 bottom-0 w-[100px] md:w-[250px] lg:w-[356px]"
         style={{
-          width: '356.37px',
-          height: '974.22px',
-          left: '-0.23px',
-          top: 'calc(50% - 974.22px/2)',
           background: 'linear-gradient(90deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
         }}
       />
       {/* Right gradient */}
       <div
-        className="absolute"
+        className="absolute right-0 top-0 bottom-0 w-[50px] md:w-[120px] lg:w-[193px]"
         style={{
-          width: '193.09px',
-          height: '939.85px',
-          right: 0,
-          top: 'calc(50% - 939.85px/2)',
           background: 'linear-gradient(270deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
         }}
       />
 
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="absolute flex flex-col items-center"
-        style={{
-          width: '1190px',
-          left: 'calc(50% - 1190px/2 - 0.23px)',
-          top: 'calc(50% - 78px/2 - 332.09px)',
-          gap: '26px',
-        }}
-      >
-        <p
-          className="baron-neue"
-          style={{
-            fontSize: '24px',
-            lineHeight: '24px',
-            textAlign: 'center',
-            color: '#D4AF37',
-          }}
+      {/* Main Content Container */}
+      <div className="relative w-full max-w-[1190px] mx-auto px-4 sm:px-6 lg:px-0 pt-12 md:pt-16 lg:pt-24">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-center gap-4 md:gap-6 mb-8 md:mb-12"
         >
-          Adventures
-        </p>
-        <h2
-          style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: '40px',
-            fontWeight: 500,
-            lineHeight: '54px',
-            textAlign: 'center',
-            textTransform: 'capitalize',
-            color: '#FFFFFF',
-          }}
-        >
-          Eco tourism & adventures
-        </h2>
-      </motion.div>
-
-      {/* Navigation Arrows */}
-      <div
-        className="absolute flex items-center"
-        style={{
-          gap: '12px',
-          left: '1235.93px',
-          top: '743.89px',
-        }}
-      >
-        {/* Previous Button */}
-        <motion.button
-          onClick={handlePrev}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="relative"
-          style={{
-            width: '44px',
-            height: '44px',
-            opacity: 0.4,
-          }}
-        >
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-            <circle cx="22" cy="22" r="21" stroke="#FFFFFF" strokeWidth="1" />
-            <path d="M25 15L18 22L25 29" stroke="#FFFFFF" strokeWidth="1.5" />
-          </svg>
-        </motion.button>
-
-        {/* Next Button */}
-        <motion.button
-          onClick={handleNext}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="relative"
-          style={{
-            width: '44px',
-            height: '44px',
-          }}
-        >
-          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
-            <circle cx="22" cy="22" r="21" stroke="#D4AF37" strokeWidth="1" />
-            <path d="M19 15L26 22L19 29" stroke="#D4AF37" strokeWidth="1.5" />
-          </svg>
-        </motion.button>
-      </div>
-
-      {/* Image Grid - Right Side */}
-      <motion.div
-        key={activeTrek}
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-        className="absolute"
-        style={{
-          width: '483.43px',
-          height: '373.41px',
-          left: '852.49px',
-          top: 'calc(50% - 373.41px/2)',
-        }}
-      >
-        {/* Main Large Image */}
-        <div
-          className="absolute overflow-hidden"
-          style={{
-            width: '299.53px',
-            height: '373.41px',
-            left: 0,
-            top: 0,
-            borderRadius: '13.0119px',
-          }}
-        >
-          <Image
-            src={currentTrek.images.main}
-            alt={currentTrek.name}
-            fill
-            className="object-cover"
-          />
-        </div>
-
-        {/* Top Right Small Image */}
-        <div
-          className="absolute overflow-hidden"
-          style={{
-            width: '166.56px',
-            height: '143.62px',
-            left: '316.87px',
-            top: 0,
-            borderRadius: '13.0119px',
-          }}
-        >
-          <Image
-            src={currentTrek.images.top}
-            alt={`${currentTrek.name} activity`}
-            fill
-            className="object-cover"
-          />
-        </div>
-
-        {/* Bottom Right Image */}
-        <div
-          className="absolute overflow-hidden"
-          style={{
-            width: '166.56px',
-            height: '212.44px',
-            left: '316.87px',
-            top: '160.97px',
-            borderRadius: '13.0119px',
-          }}
-        >
-          <Image
-            src={currentTrek.images.bottom}
-            alt={`${currentTrek.name} view`}
-            fill
-            className="object-cover"
-          />
-        </div>
-      </motion.div>
-
-      {/* Content - Left Side */}
-      <motion.div
-        key={`content-${activeTrek}`}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="absolute flex flex-col"
-        style={{
-          width: '652px',
-          left: '112px',
-          top: '288.89px',
-          gap: '24px',
-        }}
-      >
-        {/* Title Section */}
-        <div className="flex flex-col" style={{ gap: '20px' }}>
           <p
+            className="baron-neue text-lg md:text-xl lg:text-2xl text-center"
             style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: '20px',
-              fontWeight: 500,
               lineHeight: '24px',
-              textTransform: 'capitalize',
-              color: '#F5F2E9',
-            }}
-          >
-            {currentTrek.from}
-          </p>
-          <h3
-            className="baron-neue"
-            style={{
-              fontSize: '32px',
-              lineHeight: '32px',
               color: '#D4AF37',
             }}
           >
-            {currentTrek.name}
-          </h3>
-        </div>
+            Adventures
+          </p>
+          <h2
+            className="text-2xl md:text-3xl lg:text-[40px] font-medium text-center capitalize"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              lineHeight: '1.35',
+              color: '#FFFFFF',
+            }}
+          >
+            Eco tourism & adventures
+          </h2>
+        </motion.div>
 
-        {/* Description */}
-        <p
-          style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: '20px',
-            fontWeight: 500,
-            lineHeight: '28px',
-            color: '#F5F2E9',
-          }}
-        >
-          {currentTrek.description}
-        </p>
-
-        {/* Guide */}
-        <p
-          style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: '20px',
-            fontWeight: 500,
-            lineHeight: '24px',
-            textTransform: 'capitalize',
-            color: '#D4AF37',
-          }}
-        >
-          Official Guides- {currentTrek.guide}
-        </p>
-      </motion.div>
-
-      {/* Trek Timeline/Tabs */}
-      <div
-        className="absolute"
-        style={{
-          width: '810px',
-          height: '76px',
-          left: 0,
-          top: '623.89px',
-        }}
-      >
-        {/* Progress Line */}
-        <div
-          className="absolute"
-          style={{
-            width: '764.31px',
-            height: '2.94px',
-            left: 0,
-            top: '32.7px',
-            background:
-              'linear-gradient(90deg, rgba(161, 133, 42, 0) 0%, #D4AF37 21.63%, rgba(110, 91, 29, 0.1) 54.37%)',
-          }}
-        />
-
-        {/* Trek Tabs */}
-        <div
-          className="absolute flex items-center"
-          style={{
-            gap: '72px',
-            left: '112.29px',
-            top: 0,
-          }}
-        >
-          {treks.map((trek, index) => (
-            <motion.button
-              key={trek.id}
-              onClick={() => setActiveTrek(index)}
-              whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-start"
-              style={{
-                gap: '16px',
-                opacity: index === activeTrek ? 1 : 0.55,
-              }}
-            >
+        {/* Content Grid - Stacks on mobile */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 mt-8 md:mt-12">
+          {/* Content - Left Side */}
+          <motion.div
+            key={`content-${activeTrek}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col w-full lg:w-[55%] xl:w-[652px] gap-4 md:gap-6 order-2 lg:order-1"
+          >
+            {/* Title Section */}
+            <div className="flex flex-col gap-3 md:gap-5">
               <p
+                className="text-base md:text-lg lg:text-xl font-medium capitalize"
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
-                  fontSize: '12px',
-                  fontWeight: 500,
-                  lineHeight: '15px',
-                  textTransform: 'capitalize',
+                  lineHeight: '24px',
                   color: '#F5F2E9',
                 }}
               >
-                {trek.label}
+                {currentTrek.from}
               </p>
-              <div
+              <h3
+                className="baron-neue text-2xl md:text-[28px] lg:text-[32px]"
                 style={{
-                  width: '20px',
-                  height: '20px',
-                  borderRadius: '50%',
-                  background: index === activeTrek ? '#D4AF37' : '#79631E',
-                }}
-              />
-              <p
-                className="baron-neue"
-                style={{
-                  fontSize: '16px',
-                  lineHeight: '16px',
-                  textAlign: 'center',
+                  lineHeight: '1',
                   color: '#D4AF37',
                 }}
               >
-                {trek.name}
-              </p>
+                {currentTrek.name}
+              </h3>
+            </div>
+
+            {/* Description */}
+            <p
+              className="text-base md:text-lg lg:text-xl font-medium"
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                lineHeight: '1.4',
+                color: '#F5F2E9',
+              }}
+            >
+              {currentTrek.description}
+            </p>
+
+            {/* Guide */}
+            <p
+              className="text-base md:text-lg lg:text-xl font-medium capitalize"
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                lineHeight: '24px',
+                color: '#D4AF37',
+              }}
+            >
+              Official Guides- {currentTrek.guide}
+            </p>
+          </motion.div>
+
+          {/* Image Grid - Right Side */}
+          <motion.div
+            key={activeTrek}
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="relative w-full lg:w-[45%] xl:w-[483px] h-[280px] sm:h-[320px] md:h-[373px] order-1 lg:order-2"
+          >
+            {/* Main Large Image */}
+            <div
+              className="absolute overflow-hidden left-0 top-0 w-[60%] md:w-[62%] h-full rounded-xl md:rounded-[13px]"
+            >
+              <Image
+                src={currentTrek.images.main}
+                alt={currentTrek.name}
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Top Right Small Image */}
+            <div
+              className="absolute overflow-hidden right-0 top-0 w-[35%] md:w-[34%] h-[38%] rounded-xl md:rounded-[13px]"
+            >
+              <Image
+                src={currentTrek.images.top}
+                alt={`${currentTrek.name} activity`}
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Bottom Right Image */}
+            <div
+              className="absolute overflow-hidden right-0 bottom-0 w-[35%] md:w-[34%] h-[57%] rounded-xl md:rounded-[13px]"
+            >
+              <Image
+                src={currentTrek.images.bottom}
+                alt={`${currentTrek.name} view`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Trek Timeline/Tabs */}
+        <div className="relative mt-8 md:mt-12 lg:mt-16 w-full max-w-[810px]">
+          {/* Progress Line */}
+          <div
+            className="absolute left-0 right-0 top-[32px] h-[3px] hidden sm:block"
+            style={{
+              background:
+                'linear-gradient(90deg, rgba(161, 133, 42, 0) 0%, #D4AF37 21.63%, rgba(110, 91, 29, 0.1) 54.37%)',
+            }}
+          />
+
+          {/* Trek Tabs */}
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-8 md:gap-12 lg:gap-[72px] justify-center sm:justify-start">
+            {treks.map((trek, index) => (
+              <motion.button
+                key={trek.id}
+                onClick={() => setActiveTrek(index)}
+                whileHover={{ scale: 1.05 }}
+                className="flex flex-col items-center sm:items-start gap-2 sm:gap-4"
+                style={{
+                  opacity: index === activeTrek ? 1 : 0.55,
+                }}
+              >
+                <p
+                  className="text-xs font-medium capitalize hidden sm:block"
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    lineHeight: '15px',
+                    color: '#F5F2E9',
+                  }}
+                >
+                  {trek.label}
+                </p>
+                <div
+                  className="w-4 h-4 sm:w-5 sm:h-5 rounded-full"
+                  style={{
+                    background: index === activeTrek ? '#D4AF37' : '#79631E',
+                  }}
+                />
+                <p
+                  className="baron-neue text-xs sm:text-sm lg:text-base text-center"
+                  style={{
+                    lineHeight: '16px',
+                    color: '#D4AF37',
+                  }}
+                >
+                  {trek.name}
+                </p>
+              </motion.button>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom Row - View More Button and Navigation */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mt-8 md:mt-12 pb-12 md:pb-16 lg:pb-24">
+          {/* View More Button */}
+          <motion.button
+            whileHover={{ scale: 1.02, background: 'rgba(212, 175, 55, 0.6)' }}
+            whileTap={{ scale: 0.98 }}
+            className="flex items-center justify-center w-full sm:w-auto min-w-[171px] h-12 px-6 py-3 rounded-md"
+            style={{
+              gap: '10px',
+              background: 'rgba(212, 175, 55, 0.44)',
+              backdropFilter: 'blur(2px)',
+            }}
+          >
+            <span
+              className="text-base font-normal underline"
+              style={{
+                fontFamily: "'Poppins', sans-serif",
+                lineHeight: '24px',
+                color: '#FFFFFF',
+              }}
+            >
+              View More
+            </span>
+          </motion.button>
+
+          {/* Navigation Arrows */}
+          <div className="flex items-center gap-3">
+            {/* Previous Button */}
+            <motion.button
+              onClick={handlePrev}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative w-10 h-10 md:w-11 md:h-11"
+              style={{
+                opacity: 0.4,
+              }}
+            >
+              <svg width="100%" height="100%" viewBox="0 0 44 44" fill="none">
+                <circle cx="22" cy="22" r="21" stroke="#FFFFFF" strokeWidth="1" />
+                <path d="M25 15L18 22L25 29" stroke="#FFFFFF" strokeWidth="1.5" />
+              </svg>
             </motion.button>
-          ))}
+
+            {/* Next Button */}
+            <motion.button
+              onClick={handleNext}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative w-10 h-10 md:w-11 md:h-11"
+            >
+              <svg width="100%" height="100%" viewBox="0 0 44 44" fill="none">
+                <circle cx="22" cy="22" r="21" stroke="#D4AF37" strokeWidth="1" />
+                <path d="M19 15L26 22L19 29" stroke="#D4AF37" strokeWidth="1.5" />
+              </svg>
+            </motion.button>
+          </div>
         </div>
       </div>
-
-      {/* View More Button */}
-      <motion.button
-        whileHover={{ scale: 1.02, background: 'rgba(212, 175, 55, 0.6)' }}
-        whileTap={{ scale: 0.98 }}
-        className="absolute flex items-center justify-center"
-        style={{
-          width: '171px',
-          height: '48px',
-          left: '112px',
-          top: '751.89px',
-          padding: '12px 24px',
-          gap: '10px',
-          background: 'rgba(212, 175, 55, 0.44)',
-          backdropFilter: 'blur(2px)',
-          borderRadius: '6px',
-        }}
-      >
-        <span
-          style={{
-            fontFamily: "'Poppins', sans-serif",
-            fontSize: '16px',
-            fontWeight: 400,
-            lineHeight: '24px',
-            textDecoration: 'underline',
-            color: '#FFFFFF',
-          }}
-        >
-          View More
-        </span>
-      </motion.button>
 
       {/* Font Import */}
       <style jsx global>{`

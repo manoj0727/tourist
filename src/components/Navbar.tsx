@@ -107,39 +107,35 @@ const Navbar = () => {
         className="fixed top-0 left-0 right-0 z-50"
       >
         <div
-          className="mx-auto border-b border-white/20"
+          className="w-full border-b border-white/20 h-16 sm:h-20 md:h-[100px] lg:h-[122px] px-4 sm:px-6 md:px-12 lg:px-20"
           style={{
-            maxWidth: '1440px',
-            height: '122px',
-            padding: '16px 82px',
             background: 'rgba(0, 0, 0, 0.2)',
             backdropFilter: 'blur(8px)',
             WebkitBackdropFilter: 'blur(8px)',
           }}
         >
-          <div className="flex items-center justify-between h-full">
+          <div className="flex items-center justify-between h-full w-full">
             {/* Logo - Left */}
             <motion.a
               href="#home"
-              className="flex items-center"
-              style={{ gap: '10px' }}
+              className="flex items-center gap-2 md:gap-3"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <div className="relative overflow-hidden" style={{ width: '41.82px', height: '47.58px' }}>
+              <div className="relative overflow-hidden w-8 h-9 sm:w-10 sm:h-11 md:w-[42px] md:h-[48px]">
                 <Image
                   src="/nav_img.png"
                   alt="Nagar Palika Mount Abu"
                   fill
                   className="object-contain"
+                  sizes="48px"
                 />
               </div>
               <span
-                className="text-white baron-neue"
+                className="text-white rajdhani text-sm sm:text-base md:text-lg lg:text-2xl hidden sm:block"
                 style={{
                   fontWeight: 900,
-                  fontSize: '24px',
-                  lineHeight: '24px',
+                  lineHeight: '1',
                   letterSpacing: '1px',
                   textTransform: 'uppercase',
                 }}
@@ -149,24 +145,17 @@ const Navbar = () => {
             </motion.a>
 
             {/* Right Side - Hindi Button & Menu Button */}
-            <div className="flex items-center justify-between" style={{ gap: '30px' }}>
+            <div className="flex items-center gap-3 md:gap-6 lg:gap-8">
               {/* Hindi Button */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center"
-                style={{
-                  width: '100px',
-                  height: '48px',
-                  borderRadius: '25px',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
-                }}
+                className="hidden sm:flex items-center justify-center w-16 h-8 sm:w-20 sm:h-10 md:w-24 md:h-12 rounded-full border border-white/30"
               >
                 <span
-                  className="text-white baron-neue"
+                  className="text-white rajdhani text-sm sm:text-base md:text-lg"
                   style={{
                     fontWeight: 900,
-                    fontSize: '20px',
                     lineHeight: '24px',
                   }}
                 >
@@ -178,37 +167,26 @@ const Navbar = () => {
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="flex items-center justify-center"
-                style={{
-                  width: '90px',
-                  height: '90px',
-                  borderRadius: '50%',
-                }}
+                className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20"
               >
-                <motion.div
-                  className="relative"
-                  style={{ width: '51.43px', height: '51.43px' }}
-                >
+                <div className="relative w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10">
                   {/* Hamburger Icon */}
                   <motion.span
-                    animate={isMenuOpen ? { rotate: 45, y: 12 } : { rotate: 0, y: 0 }}
+                    animate={isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute left-1/2 -translate-x-1/2 bg-white"
-                    style={{ width: '26.8px', height: '2px', top: '12px' }}
+                    className="absolute left-1/2 -translate-x-1/2 bg-white w-5 sm:w-6 md:w-7 h-0.5 top-1 sm:top-2"
                   />
                   <motion.span
                     animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute left-1/2 -translate-x-1/2 bg-white"
-                    style={{ width: '26.8px', height: '2px', top: '24px' }}
+                    className="absolute left-1/2 -translate-x-1/2 bg-white w-5 sm:w-6 md:w-7 h-0.5 top-3 sm:top-4"
                   />
                   <motion.span
-                    animate={isMenuOpen ? { rotate: -45, y: -12 } : { rotate: 0, y: 0 }}
+                    animate={isMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute left-1/2 -translate-x-1/2 bg-white"
-                    style={{ width: '26.8px', height: '2px', top: '36px' }}
+                    className="absolute left-1/2 -translate-x-1/2 bg-white w-5 sm:w-6 md:w-7 h-0.5 top-5 sm:top-6"
                   />
-                </motion.div>
+                </div>
               </motion.button>
             </div>
           </div>
@@ -226,9 +204,8 @@ const Navbar = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
               onClick={() => setIsMenuOpen(false)}
-              className="fixed z-30 left-0 right-0 bottom-0"
+              className="fixed z-30 left-0 right-0 bottom-0 top-16 sm:top-20 md:top-[100px] lg:top-[122px]"
               style={{
-                top: '122px',
                 background: 'rgba(0, 0, 0, 0.25)',
                 backdropFilter: 'blur(5px)',
               }}
@@ -240,19 +217,10 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed z-40 right-0 bottom-0"
+              className="fixed z-40 right-0 bottom-0 top-16 sm:top-20 md:top-[100px] lg:top-[122px] w-full sm:w-[85%] md:w-[70%] lg:w-[50%] p-6 sm:p-8 md:p-10 lg:p-[60px] flex flex-col items-start gap-4 sm:gap-5 md:gap-6 overflow-y-auto"
               style={{
-                top: '122px',
-                width: '50%',
-                height: 'calc(100vh - 122px)',
                 background: 'rgba(19, 32, 25, 0.95)',
                 backdropFilter: 'blur(2px)',
-                padding: '60px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start',
-                gap: '24px',
-                overflowY: 'auto',
               }}
             >
               {/* Menu Content */}
@@ -260,9 +228,8 @@ const Navbar = () => {
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="flex flex-col items-start w-full"
+                className="flex flex-col items-start w-full gap-4 sm:gap-5 md:gap-6"
                 style={{
-                  gap: '24px',
                   opacity: 0.85,
                 }}
               >
@@ -278,15 +245,13 @@ const Navbar = () => {
                       <div className="flex flex-col">
                         <button
                           onClick={() => toggleSection(item.name)}
-                          className="flex flex-row justify-between items-center w-full group"
-                          style={{ gap: '50px', width: '527px' }}
+                          className="flex flex-row justify-between items-center w-full group gap-4 sm:gap-6 md:gap-8 lg:gap-[50px]"
                         >
                           <span
-                            className="text-white hover:text-white/80 transition-colors text-left baron-neue"
+                            className="text-white hover:text-white/80 transition-colors text-left rajdhani text-sm sm:text-base md:text-lg lg:text-2xl"
                             style={{
                               fontWeight: 900,
-                              fontSize: '24px',
-                              lineHeight: '24px',
+                              lineHeight: '1.2',
                               letterSpacing: '1.19px',
                               textTransform: 'uppercase',
                             }}
@@ -319,10 +284,9 @@ const Navbar = () => {
                               animate={{ height: 'auto', opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
                               transition={{ duration: 0.3 }}
-                              className="overflow-hidden"
-                              style={{ paddingLeft: '10px', paddingTop: '34px' }}
+                              className="overflow-hidden pl-2 sm:pl-3 pt-4 sm:pt-6 md:pt-8"
                             >
-                              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                              <div className="flex flex-col gap-3 sm:gap-4 md:gap-5">
                                 {item.subItems.map((subItem, subIndex) => (
                                   <motion.a
                                     key={subItem.name}
@@ -331,11 +295,10 @@ const Navbar = () => {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: subIndex * 0.08 }}
                                     onClick={() => setIsMenuOpen(false)}
-                                    className="block baron-neue hover:opacity-80 transition-opacity"
+                                    className="block rajdhani hover:opacity-80 transition-opacity text-xs sm:text-sm md:text-base lg:text-xl"
                                     style={{
                                       fontWeight: 900,
-                                      fontSize: '20px',
-                                      lineHeight: '20px',
+                                      lineHeight: '1.2',
                                       letterSpacing: '2px',
                                       textTransform: 'uppercase',
                                       color: '#D4AF37',
@@ -353,11 +316,10 @@ const Navbar = () => {
                       <a
                         href={item.href}
                         onClick={() => setIsMenuOpen(false)}
-                        className="text-white hover:text-white/80 transition-colors block baron-neue"
+                        className="text-white hover:text-white/80 transition-colors block rajdhani text-sm sm:text-base md:text-lg lg:text-2xl"
                         style={{
                           fontWeight: 900,
-                          fontSize: '24px',
-                          lineHeight: '24px',
+                          lineHeight: '1.2',
                           letterSpacing: '1.19px',
                           textTransform: 'uppercase',
                         }}
@@ -373,8 +335,7 @@ const Navbar = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  className="flex flex-row items-center"
-                  style={{ gap: '17.82px', marginTop: '24px' }}
+                  className="flex flex-row items-center gap-3 sm:gap-4 mt-4 sm:mt-6"
                 >
                   {socialLinks.map((social, index) => (
                     <motion.a
@@ -384,15 +345,9 @@ const Navbar = () => {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.7 + index * 0.08 }}
                       whileHover={{ scale: 1.1 }}
-                      className="flex items-center justify-center text-white hover:text-white/80 transition-colors"
-                      style={{
-                        width: '35.63px',
-                        height: '35.63px',
-                        border: '1.19px solid #FFFFFF',
-                        borderRadius: '29.69px',
-                      }}
+                      className="flex items-center justify-center text-white hover:text-white/80 transition-colors w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-white"
                     >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5" viewBox="0 0 24 24" fill="currentColor">
                         <path d={social.icon} />
                       </svg>
                     </motion.a>
@@ -407,16 +362,10 @@ const Navbar = () => {
 
       {/* Custom Styles */}
       <style jsx global>{`
-        @font-face {
-          font-family: 'Baron Neue';
-          src: url('/fonts/BaronNeue.otf') format('opentype');
-          font-weight: 900;
-          font-style: normal;
-          font-display: swap;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
-        .baron-neue {
-          font-family: 'Baron Neue', 'Montserrat', sans-serif;
+        .rajdhani {
+          font-family: 'Rajdhani', sans-serif;
         }
       `}</style>
     </>

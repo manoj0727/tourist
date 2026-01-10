@@ -70,10 +70,8 @@ export default function HiddenPlaces() {
 
   return (
     <section
-      className="relative overflow-hidden mx-auto"
+      className="relative overflow-hidden mx-auto w-full max-w-[1440px] min-h-[800px] md:min-h-[900px] lg:min-h-[975px]"
       style={{
-        width: '1440px',
-        height: '975px',
         background: '#17261E',
       }}
     >
@@ -124,12 +122,7 @@ export default function HiddenPlaces() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="absolute flex flex-col items-center"
-        style={{
-          width: '100%',
-          top: '80px',
-          gap: '16px',
-        }}
+        className="relative md:absolute flex flex-col items-center w-full px-4 pt-12 md:pt-0 md:top-[80px] gap-4"
       >
         <motion.div
           initial={{ width: 0 }}
@@ -142,24 +135,17 @@ export default function HiddenPlaces() {
           }}
         />
         <p
-          className="baron-neue"
+          className="baron-neue text-lg md:text-xl lg:text-2xl text-center tracking-[4px]"
           style={{
-            fontSize: '24px',
-            lineHeight: '24px',
-            textAlign: 'center',
             color: '#D4AF37',
-            letterSpacing: '4px',
           }}
         >
           Hidden Places
         </p>
         <h2
+          className="text-2xl md:text-3xl lg:text-[42px] font-medium text-center leading-tight md:leading-[54px] px-4"
           style={{
             fontFamily: "'Montserrat', sans-serif",
-            fontSize: '42px',
-            fontWeight: 500,
-            lineHeight: '54px',
-            textAlign: 'center',
             color: '#FFFFFF',
             textShadow: '0 4px 20px rgba(0,0,0,0.5)',
           }}
@@ -170,26 +156,14 @@ export default function HiddenPlaces() {
 
       {/* Main Content Area */}
       <div
-        className="absolute"
-        style={{
-          top: '280px',
-          left: '80px',
-          right: '80px',
-          height: '550px',
-        }}
+        className="relative md:absolute flex flex-col-reverse lg:flex-row mt-8 md:mt-0 px-4 sm:px-8 md:px-12 lg:px-[80px] md:top-[280px] md:left-[80px] md:right-[80px] gap-8 lg:gap-0 pb-20 md:pb-0"
       >
         {/* Left Side - Animated Place Name */}
         <div
-          className="absolute"
-          style={{
-            left: 0,
-            top: 0,
-            width: '450px',
-            height: '100%',
-          }}
+          className="relative lg:absolute w-full max-w-[450px] mx-auto lg:mx-0 lg:left-0 lg:top-0 lg:h-full"
         >
           {/* Current Place Name - Large Animated */}
-          <div className="relative" style={{ height: '120px', marginBottom: '30px' }}>
+          <div className="relative h-[80px] sm:h-[100px] lg:h-[120px] mb-4 sm:mb-6 lg:mb-[30px]">
             <AnimatePresence mode="wait">
               <motion.h3
                 key={`name-${activePlace}`}
@@ -197,10 +171,8 @@ export default function HiddenPlaces() {
                 animate={{ opacity: 1, y: 0, rotateX: 0 }}
                 exit={{ opacity: 0, y: -40, rotateX: 20 }}
                 transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="baron-neue absolute"
+                className="baron-neue absolute text-3xl sm:text-4xl md:text-5xl lg:text-[56px] leading-tight"
                 style={{
-                  fontSize: '56px',
-                  lineHeight: '1.1',
                   color: '#D4AF37',
                   textShadow: '0 4px 30px rgba(212, 175, 55, 0.3)',
                 }}
@@ -218,13 +190,10 @@ export default function HiddenPlaces() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4, delay: 0.1 }}
+              className="text-sm sm:text-base lg:text-lg leading-relaxed sm:leading-7 lg:leading-8 mb-6 sm:mb-8 lg:mb-10"
               style={{
                 fontFamily: "'Montserrat', sans-serif",
-                fontSize: '18px',
-                fontWeight: 400,
-                lineHeight: '32px',
                 color: 'rgba(245, 242, 233, 0.8)',
-                marginBottom: '40px',
               }}
             >
               {currentPlace.description}
@@ -232,23 +201,20 @@ export default function HiddenPlaces() {
           </AnimatePresence>
 
           {/* Navigation Controls */}
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-6">
             {/* Prev/Next Buttons */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
               <motion.button
                 onClick={handlePrev}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="flex items-center justify-center"
+                className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full"
                 style={{
-                  width: '56px',
-                  height: '56px',
-                  borderRadius: '50%',
                   border: '1px solid rgba(255,255,255,0.3)',
                   background: 'rgba(255,255,255,0.05)',
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5">
                   <path d="M15 18l-6-6 6-6" />
                 </svg>
               </motion.button>
@@ -257,16 +223,13 @@ export default function HiddenPlaces() {
                 onClick={handleNext}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="flex items-center justify-center"
+                className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full"
                 style={{
-                  width: '56px',
-                  height: '56px',
-                  borderRadius: '50%',
                   border: '1px solid #D4AF37',
                   background: 'rgba(212, 175, 55, 0.15)',
                 }}
               >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5">
                   <path d="M9 18l6-6-6-6" />
                 </svg>
               </motion.button>
@@ -279,30 +242,24 @@ export default function HiddenPlaces() {
                 background: 'rgba(212, 175, 55, 0.5)',
               }}
               whileTap={{ scale: 0.98 }}
-              className="flex items-center justify-center gap-3"
+              className="flex items-center justify-center gap-2 sm:gap-3 h-10 sm:h-12 lg:h-14 px-4 sm:px-6 lg:px-8 rounded-lg"
               style={{
-                height: '56px',
-                padding: '0 32px',
                 background: 'rgba(212, 175, 55, 0.25)',
                 backdropFilter: 'blur(4px)',
-                borderRadius: '8px',
                 border: '1px solid rgba(212, 175, 55, 0.4)',
               }}
             >
               <span
+                className="text-xs sm:text-sm lg:text-[15px] font-medium tracking-wider"
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
-                  fontSize: '15px',
-                  fontWeight: 500,
                   color: '#FFFFFF',
-                  letterSpacing: '1px',
                 }}
               >
                 Explore All
               </span>
               <motion.svg
-                width="20"
-                height="20"
+                className="w-4 h-4 sm:w-5 sm:h-5"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="#FFFFFF"
@@ -319,13 +276,7 @@ export default function HiddenPlaces() {
 
         {/* Right Side - Main Image */}
         <div
-          className="absolute"
-          style={{
-            right: 0,
-            top: 0,
-            width: '750px',
-            height: '520px',
-          }}
+          className="relative lg:absolute w-full max-w-[750px] mx-auto lg:mx-0 lg:right-0 lg:top-0 h-[300px] sm:h-[400px] md:h-[450px] lg:h-[520px]"
         >
           {/* Main Featured Image */}
           <AnimatePresence mode="wait">
@@ -335,13 +286,8 @@ export default function HiddenPlaces() {
               animate={{ opacity: 1, scale: 1, x: 0 }}
               exit={{ opacity: 0, scale: 0.95, x: -50 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute overflow-hidden"
+              className="relative lg:absolute overflow-hidden w-full max-w-[520px] h-[300px] sm:h-[400px] md:h-[450px] lg:h-[520px] mx-auto lg:mx-0 lg:right-[100px] lg:top-0 rounded-2xl lg:rounded-3xl"
               style={{
-                width: '520px',
-                height: '520px',
-                right: '100px',
-                top: 0,
-                borderRadius: '24px',
                 border: '3px solid rgba(212, 175, 55, 0.6)',
                 boxShadow: '0 30px 60px rgba(0,0,0,0.5)',
               }}
@@ -364,14 +310,9 @@ export default function HiddenPlaces() {
 
           {/* Decorative Elements */}
           <motion.div
-            className="absolute"
+            className="absolute hidden lg:block w-20 h-20 sm:w-24 sm:h-24 lg:w-[120px] lg:h-[120px] right-4 sm:right-8 lg:right-[60px] -top-4 sm:-top-6 lg:-top-[30px] rounded-full"
             style={{
-              width: '120px',
-              height: '120px',
-              right: '60px',
-              top: '-30px',
               border: '1px solid rgba(212, 175, 55, 0.2)',
-              borderRadius: '50%',
             }}
             animate={{
               scale: [1, 1.1, 1],

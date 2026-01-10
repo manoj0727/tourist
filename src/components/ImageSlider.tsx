@@ -16,27 +16,78 @@ const images = [
 ];
 
 const destinations = [
-  { title: 'Lorem Ipsum', subtitle: 'Dolor Sit' },
-  { title: 'Amet Consectetur', subtitle: 'Adipiscing' },
-  { title: 'Magna Aliqua', subtitle: 'Ut Enim' },
-  { title: 'Ullamco Laboris', subtitle: 'Nisi Ut' },
-  { title: 'Velit Esse', subtitle: 'Cillum' },
-  { title: 'Culpa Qui', subtitle: 'Officia' },
-  { title: 'Unde Omnis', subtitle: 'Iste Natus' },
-  { title: 'Aut Odit', subtitle: 'Aut Fugit' },
+  {
+    title: 'Dilwara Temples',
+    description: 'The Dilwara Temples are celebrated for their exquisite white marble carvings and architectural brilliance.'
+  },
+  {
+    title: 'Nakki Lake',
+    description: 'A beautiful sacred lake surrounded by hills, perfect for boating and peaceful walks.'
+  },
+  {
+    title: 'Sunset Point',
+    description: 'Watch the golden sun set behind the Aravalli ranges in a spectacular display.'
+  },
+  {
+    title: 'Toad Rock',
+    description: 'A natural rock formation resembling a toad, offering panoramic views of the valley.'
+  },
+  {
+    title: 'Guru Shikhar',
+    description: 'The highest peak in the Aravalli Range at 1,722 meters, offering breathtaking views.'
+  },
+  {
+    title: 'Achalgarh Fort',
+    description: 'An ancient Paramara dynasty fort with stunning architecture and rich history.'
+  },
+  {
+    title: 'Peace Park',
+    description: 'A serene park ideal for meditation and connecting with nature.'
+  },
+  {
+    title: 'Wildlife Sanctuary',
+    description: 'Home to diverse flora and fauna including leopards, sloth bears, and wild boars.'
+  },
 ];
 
-const cardConfigs = [
-  { offset: -2, width: 160, height: 240, x: -440, opacity: 0.2, scale: 0.75 },
-  { offset: -1, width: 220, height: 330, x: -260, opacity: 0.5, scale: 0.88 },
-  { offset: 0, width: 320, height: 440, x: 0, opacity: 1, scale: 1 },
-  { offset: 1, width: 220, height: 330, x: 260, opacity: 0.5, scale: 0.88 },
-  { offset: 2, width: 160, height: 240, x: 440, opacity: 0.2, scale: 0.75 },
+// Desktop card configs - 5 visible cards matching Figma specs
+const cardConfigsDesktop = [
+  { offset: -2, width: 331, height: 408, x: -596, opacity: 1, scale: 1 },      // Far left
+  { offset: -1, width: 331, height: 408, x: -276, opacity: 1, scale: 1 },      // Left
+  { offset: 0, width: 419, height: 482, x: 0, opacity: 1, scale: 1 },          // Center (larger)
+  { offset: 1, width: 331, height: 408, x: 276, opacity: 1, scale: 1 },        // Right
+  { offset: 2, width: 331, height: 408, x: 596, opacity: 1, scale: 1 },        // Far right
+];
+
+// Tablet card configs - 3 visible cards
+const cardConfigsTablet = [
+  { offset: -1, width: 260, height: 320, x: -220, opacity: 1, scale: 1 },
+  { offset: 0, width: 320, height: 400, x: 0, opacity: 1, scale: 1 },
+  { offset: 1, width: 260, height: 320, x: 220, opacity: 1, scale: 1 },
+];
+
+// Mobile card configs - single card
+const cardConfigsMobile = [
+  { offset: 0, width: 300, height: 420, x: 0, opacity: 1, scale: 1 },
 ];
 
 export default function ImageSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 640);
+      setIsTablet(window.innerWidth >= 640 && window.innerWidth < 1024);
+    };
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  const cardConfigs = isMobile ? cardConfigsMobile : isTablet ? cardConfigsTablet : cardConfigsDesktop;
 
   const getIndex = (offset: number) => {
     return (activeIndex + offset + images.length) % images.length;
@@ -60,92 +111,103 @@ export default function ImageSlider() {
 
   return (
     <section
-      className="relative overflow-hidden mx-auto"
-      style={{ width: '1440px', height: '900px' }}
+      className="relative overflow-hidden w-full"
+      style={{ height: '972px' }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background */}
+      {/* Background Image */}
       <div className="absolute inset-0">
-        <Image src="/images/bg2.jpg" alt="Background" fill className="object-cover" />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="absolute inset-0" style={{ background: 'rgba(19, 32, 25, 0.5)' }} />
+        <Image src="/images/bg2.jpg" alt="Background" fill className="object-cover" sizes="100vw" />
       </div>
 
-      {/* Top Gradient - connects with Hero bottom */}
+      {/* Top Gradient - Layer 1 (darker, taller) */}
       <div
         className="absolute top-0 left-0 right-0"
         style={{
-          height: '350px',
-          background: 'linear-gradient(180deg, #132019 0%, rgba(19, 32, 25, 0.6) 40%, rgba(19, 32, 25, 0) 100%)',
+          height: '484px',
+          background: 'linear-gradient(180deg, #132019 0%, rgba(108, 100, 73, 0) 100%)',
+          zIndex: 2,
         }}
       />
 
-      {/* Extra top solid color for seamless connection */}
+      {/* Top Gradient - Layer 2 */}
       <div
         className="absolute top-0 left-0 right-0"
         style={{
-          height: '40px',
-          background: '#132019',
+          height: '433px',
+          background: 'linear-gradient(180deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
+          zIndex: 3,
         }}
       />
 
       {/* Bottom Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-[220px]" style={{ background: 'linear-gradient(0deg, #132019 0%, transparent 100%)' }} />
+      <div
+        className="absolute left-0 right-0 bottom-0"
+        style={{
+          height: '212px',
+          background: 'linear-gradient(0deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
+          zIndex: 2,
+        }}
+      />
 
-      {/* Header */}
+      {/* Header Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative z-10 flex flex-col items-center"
+        className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center px-4"
         style={{
-          position: 'absolute',
-          width: '513.81px',
-          left: 'calc(50% - 513.81px/2 + 5.5px)',
-          top: '85.26px',
+          top: '85px',
           gap: '40px',
+          zIndex: 10,
         }}
       >
+        {/* Destinations label */}
         <p
-          className="baron-neue"
+          className="baron-neue text-center"
           style={{
-            width: '513.81px',
-            fontSize: '24px',
             fontWeight: 400,
+            fontSize: '24px',
             lineHeight: '16px',
-            textAlign: 'center',
             color: '#D4AF37',
           }}
         >
           Destinations
         </p>
+
+        {/* Main heading */}
         <h2
+          className="text-center"
           style={{
-            width: '513.81px',
             fontFamily: "'Montserrat', sans-serif",
-            fontSize: '40px',
             fontWeight: 500,
+            fontSize: 'clamp(28px, 4vw, 40px)',
             lineHeight: '54px',
-            textAlign: 'center',
             textTransform: 'capitalize',
             color: '#F5F2E9',
             textShadow: '3px 2px 0px rgba(0, 0, 0, 0.5)',
+            maxWidth: '514px',
           }}
         >
-          Top Destinations to visit<br />Mount Abu
+          Top Destinations to visit Mount Abu
         </h2>
       </motion.div>
 
       {/* Cards Container */}
       <div
-        className="absolute left-1/2 -translate-x-1/2"
-        style={{ top: '260px', width: '1100px', height: '460px' }}
+        className="absolute left-1/2 -translate-x-1/2 w-full"
+        style={{
+          top: '292px',
+          height: '482px',
+          maxWidth: '1224px',
+          zIndex: 5,
+        }}
       >
         {cardConfigs.map((config) => {
           const index = getIndex(config.offset);
           const isCenter = config.offset === 0;
-          const zIndex = 30 - Math.abs(config.offset) * 10;
+          const zIndex = isCenter ? 30 : 20 - Math.abs(config.offset);
 
           return (
             <motion.div
@@ -157,9 +219,9 @@ export default function ImageSlider() {
               }}
               transition={{
                 type: 'spring',
-                stiffness: 180,
-                damping: 22,
-                mass: 0.9,
+                stiffness: 200,
+                damping: 25,
+                mass: 0.8,
               }}
               className="absolute overflow-hidden"
               style={{
@@ -169,30 +231,23 @@ export default function ImageSlider() {
                 top: '50%',
                 marginLeft: -config.width / 2,
                 marginTop: -config.height / 2,
-                borderRadius: '12px',
-                border: isCenter ? '1px solid rgba(212,175,55,0.3)' : '1px solid rgba(255,255,255,0.05)',
-                boxShadow: isCenter
-                  ? '0 20px 40px rgba(0,0,0,0.4)'
-                  : '0 10px 25px rgba(0,0,0,0.3)',
+                borderRadius: '13px',
+                border: isCenter ? '4px solid #122018' : '2px solid #122018',
                 zIndex,
-                cursor: config.offset === -1 || config.offset === 1 ? 'pointer' : 'default',
+                cursor: !isCenter ? 'pointer' : 'default',
               }}
               onClick={() => {
-                if (config.offset === -1) handlePrev();
-                if (config.offset === 1) handleNext();
+                if (config.offset === -1 || config.offset === -2) handlePrev();
+                if (config.offset === 1 || config.offset === 2) handleNext();
               }}
-              whileHover={
-                config.offset === -1 || config.offset === 1
-                  ? { scale: config.scale * 1.04, opacity: config.opacity + 0.15 }
-                  : {}
-              }
+              whileHover={!isCenter ? { scale: 1.02 } : {}}
             >
               {/* Image */}
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, ease: 'easeOut' }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
                 className="absolute inset-0"
               >
                 <Image
@@ -204,182 +259,147 @@ export default function ImageSlider() {
                 />
               </motion.div>
 
-              {/* Bottom half gradient overlay for text */}
-              <div
-                className="absolute left-0 right-0 bottom-0"
-                style={{
-                  height: '55%',
-                  background: isCenter
-                    ? 'linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.3) 70%, transparent 100%)'
-                    : 'linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)',
-                }}
-              />
+              {/* Center card content overlay */}
+              {isCenter && (
+                <>
+                  {/* Gradient overlay with blur */}
+                  <div
+                    className="absolute left-0 right-0 bottom-0"
+                    style={{
+                      height: '242px',
+                      background: 'linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%)',
+                      backdropFilter: 'blur(2.2px)',
+                    }}
+                  />
 
-              {/* Content - Bottom Half */}
-              <div
-                className="absolute left-0 right-0 bottom-0 flex flex-col justify-end"
-                style={{ height: '50%', padding: isCenter ? '24px' : '16px' }}
-              >
-                {isCenter ? (
+                  {/* Arrow button */}
                   <motion.div
-                    key={`center-content-${index}`}
+                    className="absolute flex items-center justify-center"
+                    style={{
+                      width: '63px',
+                      height: '63px',
+                      right: '20px',
+                      top: '13px',
+                      background: '#000000',
+                      borderRadius: '45px',
+                    }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <svg width="31" height="31" viewBox="0 0 24 24" fill="none">
+                      <path
+                        d="M7 17L17 7M17 7H7M17 7V17"
+                        stroke="#FFFFFF"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </motion.div>
+
+                  {/* Content */}
+                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: 0.1 }}
+                    className="absolute left-0 right-0 bottom-0 flex flex-col justify-end"
+                    style={{
+                      padding: '29px',
+                      gap: '21px',
+                    }}
                   >
-                    {/* Decorative element */}
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: 40 }}
-                      transition={{ duration: 0.4, delay: 0.2 }}
-                      className="h-[1px] mb-4"
-                      style={{ background: 'linear-gradient(90deg, #D4AF37, transparent)' }}
-                    />
-
-                    {/* Subtitle */}
-                    <p
-                      style={{
-                        fontFamily: "'Playfair Display', Georgia, serif",
-                        fontSize: '12px',
-                        color: '#D4AF37',
-                        fontStyle: 'italic',
-                        letterSpacing: '2px',
-                        marginBottom: '8px',
-                        textTransform: 'uppercase',
-                      }}
-                    >
-                      {destinations[index].subtitle}
-                    </p>
-
                     {/* Title */}
                     <h3
                       style={{
-                        fontFamily: "'Playfair Display', Georgia, serif",
-                        fontSize: '28px',
-                        fontWeight: 500,
+                        fontFamily: "'Montserrat', sans-serif",
+                        fontWeight: 700,
+                        fontSize: '22px',
+                        lineHeight: '66px',
+                        textTransform: 'capitalize',
                         color: '#F5F2E9',
-                        letterSpacing: '1px',
-                        lineHeight: 1.2,
-                        textShadow: '0 2px 10px rgba(0,0,0,0.5)',
                       }}
                     >
                       {destinations[index].title}
                     </h3>
 
-                    {/* Bottom decorative line */}
-                    <motion.div
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                      className="mt-4 origin-left"
-                      style={{
-                        width: '60px',
-                        height: '2px',
-                        background: 'linear-gradient(90deg, #D4AF37, rgba(212,175,55,0.3))',
-                      }}
-                    />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key={`side-content-${index}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  >
+                    {/* Description */}
                     <p
                       style={{
-                        fontFamily: "'Playfair Display', Georgia, serif",
-                        fontSize: '10px',
-                        color: 'rgba(212,175,55,0.8)',
-                        fontStyle: 'italic',
-                        letterSpacing: '1px',
-                        marginBottom: '4px',
-                        textTransform: 'uppercase',
-                      }}
-                    >
-                      {destinations[index].subtitle}
-                    </p>
-                    <h3
-                      style={{
-                        fontFamily: "'Playfair Display', Georgia, serif",
-                        fontSize: config.offset === -1 || config.offset === 1 ? '16px' : '13px',
+                        fontFamily: "'Montserrat', sans-serif",
                         fontWeight: 500,
+                        fontSize: '17.6px',
+                        lineHeight: '31px',
                         color: '#F5F2E9',
-                        lineHeight: 1.3,
+                        maxWidth: '360px',
                       }}
                     >
-                      {destinations[index].title}
-                    </h3>
+                      {destinations[index].description}
+                    </p>
                   </motion.div>
-                )}
-              </div>
+                </>
+              )}
             </motion.div>
           );
         })}
       </div>
 
-      {/* Navigation */}
+      {/* Navigation Buttons */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 flex items-center gap-6"
-        style={{ bottom: '50px' }}
+        className="absolute left-1/2 -translate-x-1/2 flex items-center"
+        style={{
+          top: '843px',
+          gap: '12px',
+          zIndex: 10,
+        }}
       >
-        {/* Prev Button */}
+        {/* Previous Button */}
         <motion.button
           onClick={handlePrev}
-          whileHover={{ scale: 1.08 }}
+          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="w-10 h-10 rounded-full flex items-center justify-center"
+          className="flex items-center justify-center"
           style={{
-            border: '1px solid rgba(255,255,255,0.2)',
-            background: 'rgba(255,255,255,0.03)',
-            backdropFilter: 'blur(8px)',
+            width: '44px',
+            height: '44px',
+            opacity: 0.4,
           }}
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" strokeWidth="1.5">
-            <path d="M15 18l-6-6 6-6" />
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="21" stroke="#FFFFFF" strokeWidth="1" />
+            <path
+              d="M25 15L18 22L25 29"
+              stroke="#FFFFFF"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </motion.button>
-
-        {/* Dots */}
-        <div className="flex items-center gap-[6px]">
-          {images.map((_, i) => (
-            <motion.button
-              key={i}
-              onClick={() => setActiveIndex(i)}
-              className="relative"
-              whileHover={{ scale: 1.2 }}
-            >
-              <motion.div
-                animate={{
-                  width: i === activeIndex ? 20 : 5,
-                  height: 5,
-                  background: i === activeIndex ? '#D4AF37' : 'rgba(255,255,255,0.2)',
-                }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 350,
-                  damping: 28
-                }}
-                className="rounded-full"
-              />
-            </motion.button>
-          ))}
-        </div>
 
         {/* Next Button */}
         <motion.button
           onClick={handleNext}
-          whileHover={{ scale: 1.08 }}
+          whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className="w-10 h-10 rounded-full flex items-center justify-center"
+          className="flex items-center justify-center"
           style={{
-            border: '1px solid rgba(212,175,55,0.4)',
-            background: 'rgba(212,175,55,0.06)',
-            backdropFilter: 'blur(8px)',
+            width: '44px',
+            height: '44px',
           }}
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5">
-            <path d="M9 18l6-6-6-6" />
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="21" stroke="#D4AF37" strokeWidth="1" />
+            <path
+              d="M19 15L26 22L19 29"
+              fill="#D4AF37"
+            />
+            <path
+              d="M19 15L26 22L19 29"
+              stroke="#D4AF37"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </motion.button>
       </div>

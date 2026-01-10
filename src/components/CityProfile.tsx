@@ -31,11 +31,7 @@ const birthStats = [
 export default function CityProfile() {
   return (
     <section
-      className="relative overflow-hidden mx-auto"
-      style={{
-        width: '1440px',
-        height: '1008px',
-      }}
+      className="relative overflow-hidden mx-auto w-full max-w-[1440px] min-h-[800px] md:min-h-[1008px] py-12 md:py-0"
     >
       {/* Background Image */}
       <div className="absolute inset-0">
@@ -56,14 +52,7 @@ export default function CityProfile() {
 
       {/* Main Content Container */}
       <div
-        className="absolute flex flex-col items-center"
-        style={{
-          width: '1245px',
-          height: '744px',
-          left: 'calc(50% - 1245px/2)',
-          top: 'calc(50% - 744px/2)',
-          gap: '60px',
-        }}
+        className="relative md:absolute flex flex-col items-center w-full max-w-[1245px] px-4 sm:px-6 lg:px-0 mx-auto md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 gap-8 md:gap-[60px]"
       >
         {/* Header */}
         <motion.div
@@ -71,32 +60,22 @@ export default function CityProfile() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col justify-center items-center"
-          style={{
-            width: '1245px',
-            gap: '26px',
-          }}
+          className="flex flex-col justify-center items-center w-full max-w-[1245px] gap-4 md:gap-[26px]"
         >
           <p
-            className="baron-neue"
+            className="baron-neue text-lg md:text-2xl text-center"
             style={{
-              fontSize: '24px',
               lineHeight: '24px',
-              textAlign: 'center',
               color: '#D4AF37',
             }}
           >
             CITY PROFILE
           </p>
           <h2
+            className="text-2xl sm:text-3xl md:text-[40px] font-medium text-center capitalize text-white"
             style={{
               fontFamily: "'Poppins', sans-serif",
-              fontSize: '40px',
-              fontWeight: 500,
-              lineHeight: '54px',
-              textAlign: 'center',
-              textTransform: 'capitalize',
-              color: '#FFFFFF',
+              lineHeight: '1.35',
             }}
           >
             Mount Abu and its environment
@@ -105,11 +84,7 @@ export default function CityProfile() {
 
         {/* Stats Cards Container */}
         <div
-          className="relative"
-          style={{
-            width: '1245px',
-            height: '606px',
-          }}
+          className="relative w-full max-w-[1245px] flex flex-col lg:flex-row gap-6 lg:gap-[30px]"
         >
           {/* Left Card - Area Stats */}
           <motion.div
@@ -117,22 +92,14 @@ export default function CityProfile() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="absolute flex flex-col justify-center items-center"
+            className="flex flex-col justify-center items-center w-full lg:w-[622px] p-4 sm:p-5 gap-4 sm:gap-[30px] rounded-3xl"
             style={{
-              width: '622px',
-              height: '604px',
-              left: '0.5px',
-              top: '2px',
-              padding: '20px',
-              gap: '30px',
               background: 'rgba(0, 0, 0, 0.3)',
               border: '1px solid #D4AF37',
-              borderRadius: '24px',
             }}
           >
             <div
-              className="flex flex-col items-start"
-              style={{ width: '582px', height: '564px', gap: '30px' }}
+              className="flex flex-col items-start w-full gap-4 sm:gap-[30px]"
             >
               {areaStats.map((stat, index) => (
                 <motion.div
@@ -141,30 +108,25 @@ export default function CityProfile() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.05 * index }}
-                  className="flex justify-between items-center"
-                  style={{
-                    width: '582px',
-                    height: '36px',
-                    gap: '18px',
-                  }}
+                  className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full gap-1 sm:gap-[18px]"
                 >
                   <span
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl"
                     style={{
                       fontFamily: "'Poppins', sans-serif",
                       fontWeight: 400,
-                      fontSize: '24px',
-                      lineHeight: '36px',
+                      lineHeight: '1.5',
                       color: '#F5F2E9',
                     }}
                   >
                     {stat.label}
                   </span>
                   <span
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl"
                     style={{
                       fontFamily: "'Poppins', sans-serif",
                       fontWeight: 400,
-                      fontSize: '24px',
-                      lineHeight: '20px',
+                      lineHeight: '1.25',
                       color: stat.isLink ? '#D4AF37' : '#F5F2E9',
                       textDecoration: stat.isLink ? 'underline' : 'none',
                       cursor: stat.isLink ? 'pointer' : 'default',
@@ -177,135 +139,113 @@ export default function CityProfile() {
             </div>
           </motion.div>
 
-          {/* Right Top Card - House Stats */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="absolute flex flex-col justify-center items-center"
-            style={{
-              width: '593px',
-              height: '312px',
-              left: '652px',
-              top: '0px',
-              padding: '30px 20px',
-              gap: '18px',
-              background: 'rgba(0, 0, 0, 0.3)',
-              border: '1px solid #D4AF37',
-              borderRadius: '24px',
-            }}
-          >
-            {houseStats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.05 * index }}
-                className="flex justify-between items-center"
-                style={{
-                  width: '553px',
-                  height: '36px',
-                  gap: '18px',
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontWeight: stat.isHeader ? 500 : 400,
-                    fontSize: '24px',
-                    lineHeight: '36px',
-                    color: '#F5F2E9',
-                  }}
+          {/* Right Column - House and Birth Stats */}
+          <div className="flex flex-col gap-6 lg:gap-[30px] w-full lg:w-[593px]">
+            {/* Right Top Card - House Stats */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex flex-col justify-center items-center w-full p-5 sm:p-[30px_20px] gap-4 sm:gap-[18px] rounded-3xl"
+              style={{
+                background: 'rgba(0, 0, 0, 0.3)',
+                border: '1px solid #D4AF37',
+              }}
+            >
+              {houseStats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.05 * index }}
+                  className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full gap-1 sm:gap-[18px]"
                 >
-                  {stat.label}
-                </span>
-                {stat.value && (
                   <span
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl"
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontWeight: 400,
-                      fontSize: '24px',
-                      lineHeight: '20px',
+                      fontWeight: stat.isHeader ? 500 : 400,
+                      lineHeight: '1.5',
                       color: '#F5F2E9',
                     }}
                   >
-                    {stat.value}
+                    {stat.label}
                   </span>
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
+                  {stat.value && (
+                    <span
+                      className="text-base sm:text-lg md:text-xl lg:text-2xl"
+                      style={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontWeight: 400,
+                        lineHeight: '1.25',
+                        color: '#F5F2E9',
+                      }}
+                    >
+                      {stat.value}
+                    </span>
+                  )}
+                </motion.div>
+              ))}
+            </motion.div>
 
-          {/* Right Bottom Card - Birth/Death Stats */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="absolute flex flex-col justify-center items-center"
-            style={{
-              width: '591px',
-              height: '264px',
-              left: '652px',
-              top: '342px',
-              padding: '30px 20px',
-              gap: '18px',
-              background: 'rgba(0, 0, 0, 0.3)',
-              border: '1px solid #D4AF37',
-              borderRadius: '24px',
-            }}
-          >
-            {birthStats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.05 * index }}
-                className="flex justify-between items-center"
-                style={{
-                  width: '551px',
-                  height: '36px',
-                  gap: '18px',
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "'Poppins', sans-serif",
-                    fontWeight: stat.isHeader ? 500 : 400,
-                    fontSize: '24px',
-                    lineHeight: '36px',
-                    color: '#F5F2E9',
-                  }}
+            {/* Right Bottom Card - Birth/Death Stats */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="flex flex-col justify-center items-center w-full p-5 sm:p-[30px_20px] gap-4 sm:gap-[18px] rounded-3xl"
+              style={{
+                background: 'rgba(0, 0, 0, 0.3)',
+                border: '1px solid #D4AF37',
+              }}
+            >
+              {birthStats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.05 * index }}
+                  className="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full gap-1 sm:gap-[18px]"
                 >
-                  {stat.label}
-                </span>
-                {stat.value && (
                   <span
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl"
                     style={{
                       fontFamily: "'Poppins', sans-serif",
-                      fontWeight: 400,
-                      fontSize: '24px',
-                      lineHeight: '20px',
+                      fontWeight: stat.isHeader ? 500 : 400,
+                      lineHeight: '1.5',
                       color: '#F5F2E9',
                     }}
                   >
-                    {stat.value}
+                    {stat.label}
                   </span>
-                )}
-              </motion.div>
-            ))}
-          </motion.div>
+                  {stat.value && (
+                    <span
+                      className="text-base sm:text-lg md:text-xl lg:text-2xl"
+                      style={{
+                        fontFamily: "'Poppins', sans-serif",
+                        fontWeight: 400,
+                        lineHeight: '1.25',
+                        color: '#F5F2E9',
+                      }}
+                    >
+                      {stat.value}
+                    </span>
+                  )}
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
 
       {/* Bottom Gradient - Transition to News section */}
       <div
-        className="absolute left-0 right-0 bottom-0"
+        className="absolute left-0 right-0 bottom-0 h-[150px] md:h-[265px]"
         style={{
-          height: '265px',
           background: 'linear-gradient(0deg, #7F6D54 0%, rgba(127, 109, 84, 0) 100%)',
         }}
       />

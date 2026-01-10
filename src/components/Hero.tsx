@@ -7,12 +7,14 @@ const Hero = () => {
   const leaders = [
     {
       name: 'Shri Bhajan Lal Sharma',
-      title: 'Chief Minister, Rajasthan',
+      title: 'Chief Minister',
+      subtitle: 'Rajasthan',
       image: '/images/cm-rajasthan.png',
     },
     {
       name: 'Shri Jhabar Singh Kharra',
-      title: "Hon'ble Minister of UDH",
+      title: "Hon'ble Minister",
+      subtitle: 'of UDH',
       image: '/images/minister-udh.png',
     },
   ];
@@ -20,284 +22,173 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative overflow-hidden mx-auto"
+      className="relative overflow-hidden w-full min-h-screen md:h-screen"
       style={{
-        width: '1440px',
-        height: '912px',
+        maxWidth: '100%',
+        backgroundColor: '#0a1510',
       }}
     >
-      {/* Background Image */}
-      <div
-        className="absolute"
+      {/* Layer 1: Background Image (h1.png) */}
+      <div className="absolute inset-0" style={{ zIndex: 1 }}>
+        <Image
+          src="/images/h1.png"
+          alt="Mount Abu Background"
+          fill
+          className="object-cover object-top"
+          priority
+          sizes="100vw"
+          quality={90}
+        />
+      </div>
+
+      {/* Majestic Text - Positioned independently on the left */}
+      <span
+        className="absolute text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[100px]"
         style={{
-          width: '1752.2px',
-          height: '1095.12px',
-          left: 'calc(50% - 1752.2px/2 + 8.16px)',
-          top: 'calc(50% - 1095.12px/2)',
+          zIndex: 15,
+          top: '15%',
+          left: '22%',
+          fontFamily: "'Montserrat', sans-serif",
+          fontWeight: 500,
+          color: '#F7BE03',
+          textShadow: '3px 2px 0px rgba(0, 0, 0, 0.5)',
+          lineHeight: '1',
+          transition: 'none',
+          animation: 'none',
+        }}
+      >
+        Majestic
+      </span>
+
+      {/* Dilwara Jain Temple Text - Positioned independently on the right */}
+      <span
+        className="absolute text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-[60px]"
+        style={{
+          zIndex: 30,
+          top: '40%',
+          right: '20%',
+          fontFamily: "'Montserrat', sans-serif",
+          fontWeight: 1000,
+          color: '#F7BE03',
+          textShadow: '3px 2px 0px rgba(0, 0, 0, 0.5)',
+          lineHeight: '1',
+          transition: 'none',
+          animation: 'none',
+        }}
+      >
+        Dilwara Jain Temple
+      </span>
+
+      {/* Layer 2: Mount Abu Text - Between background and foreground */}
+      <div
+        className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
+        style={{
+          zIndex: 15,
+          top: '22%',
+          transition: 'none',
+        }}
+      >
+        {/* Main Title - Mount abu with 3D Effect */}
+        <h1
+          className="font-black tracking-widest whitespace-nowrap flex items-baseline gap-4 sm:gap-5 md:gap-6"
+          style={{
+            fontFamily: "'Montserrat', sans-serif",
+            fontWeight: 1000,
+            color: '#ffffff',
+            textShadow: '4px 4px 0px rgba(0, 0, 0, 0.7)',
+            letterSpacing: '0.1em',
+            lineHeight: 4,
+            transition: 'none',
+            animation: 'none',
+          }}
+        >
+          <span className="text-7xl sm:text-8xl md:text-9xl lg:text-[300px] xl:text-[220px]" style={{ transition: 'none', animation: 'none' }}><span className="text-9xl sm:text-9xl md:text-[10rem] lg:text-[170px] xl:text-[220px]">M</span>ount</span>
+          <span className="text-7xl sm:text-8xl md:text-9xl lg:text-[300px] xl:text-[200px]" style={{ transition: 'none', animation: 'none' }}>Abu</span>
+        </h1>
+      </div>
+
+      {/* Layer 3: Foreground Image (h1-2.png) - Mountain/landscape overlay */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          zIndex: 20,
+          width: '100%',
+          height: '50%',
+          bottom: '31%',
+          left: '49.7%',
+          transform: 'translateX(-50%)',
         }}
       >
         <Image
-          src="/images/hero1.png"
-          alt="Mount Abu"
+          src="/images/h1-2.png"
+          alt="Mount Abu Foreground"
           fill
-          className="object-cover"
+          className="object-cover object-bottom"
           priority
+          sizes="100vw"
+          quality={90}
         />
       </div>
 
-      {/* Premium Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
-
-      {/* Bottom Gradient - connects smoothly with ImageSlider */}
+      {/* Gradient Overlays */}
       <div
-        className="absolute left-0 right-0 bottom-0"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          height: '280px',
-          background: 'linear-gradient(0deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
-          zIndex: 5,
+          zIndex: 25,
+          background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.3) 100%)',
         }}
       />
 
-      {/* Main Hero Content - Left Aligned */}
-      <div className="absolute z-10" style={{ left: '80px', top: '280px' }}>
-        {/* Decorative Line */}
-        <motion.div
-          initial={{ scaleX: 0, originX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="mb-6"
-          style={{
-            width: '60px',
-            height: '3px',
-            background: 'linear-gradient(90deg, #D4AF37 0%, #F7BE03 100%)',
-          }}
-        />
-
-        {/* Majestic - Elegant Accent Text */}
-        <motion.p
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontWeight: 300,
-            fontSize: '24px',
-            letterSpacing: '12px',
-            textTransform: 'uppercase',
-            color: '#D4AF37',
-            marginBottom: '16px',
-          }}
-        >
-          Majestic
-        </motion.p>
-
-        {/* Mount Abu - Main Title with Premium Styling */}
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
-          style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontWeight: 800,
-            fontSize: '140px',
-            lineHeight: '0.9',
-            color: '#FFFFFF',
-            textShadow: '0 4px 30px rgba(0,0,0,0.4), 0 8px 60px rgba(0,0,0,0.2)',
-            letterSpacing: '-4px',
-          }}
-        >
-          Mount
-        </motion.h1>
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontWeight: 800,
-            fontSize: '140px',
-            lineHeight: '1',
-            color: '#FFFFFF',
-            textShadow: '0 4px 30px rgba(0,0,0,0.4), 0 8px 60px rgba(0,0,0,0.2)',
-            letterSpacing: '-4px',
-            marginTop: '-10px',
-          }}
-        >
-          Abu
-        </motion.h1>
-
-        {/* Subtitle with Golden Accent */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="flex items-center mt-8"
-          style={{ gap: '16px' }}
-        >
-          <div
-            style={{
-              width: '40px',
-              height: '1px',
-              background: 'rgba(255,255,255,0.5)',
-            }}
-          />
-          <p
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontWeight: 400,
-              fontSize: '16px',
-              letterSpacing: '4px',
-              textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.8)',
-            }}
-          >
-            Rajasthan&apos;s Only Hill Station
-          </p>
-        </motion.div>
-
-        {/* Decorative Bottom Line */}
-        <motion.div
-          initial={{ scaleX: 0, originX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 1.2, delay: 1.2 }}
-          className="mt-8"
-          style={{
-            width: '120px',
-            height: '2px',
-            background: 'linear-gradient(90deg, #D4AF37 0%, transparent 100%)',
-          }}
-        />
-      </div>
-
-      {/* Dilwara Jain Temple Text - Repositioned */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1.4 }}
-        className="absolute z-10"
+      {/* Cinematic Letterbox Effect - Top */}
+      <div
+        className="absolute top-0 left-0 right-0 h-[60px] md:h-[80px] pointer-events-none"
         style={{
-          right: '80px',
-          top: '320px',
-          textAlign: 'right',
+          zIndex: 26,
+          background: 'linear-gradient(180deg, rgba(10,21,16,0.8) 0%, transparent 100%)',
         }}
-      >
-        <p
-          style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontWeight: 300,
-            fontSize: '14px',
-            letterSpacing: '6px',
-            textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.6)',
-            marginBottom: '8px',
-          }}
-        >
-          Featured Destination
-        </p>
-        <h2
-          style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontWeight: 700,
-            fontSize: '36px',
-            lineHeight: '1.2',
-            color: '#F7BE03',
-            textShadow: '2px 2px 8px rgba(0, 0, 0, 0.5)',
-          }}
-        >
-          Dilwara Jain
-        </h2>
-        <h2
-          style={{
-            fontFamily: "'Montserrat', sans-serif",
-            fontWeight: 700,
-            fontSize: '36px',
-            lineHeight: '1.2',
-            color: '#F7BE03',
-            textShadow: '2px 2px 8px rgba(0, 0, 0, 0.5)',
-          }}
-        >
-          Temple
-        </h2>
-      </motion.div>
+      />
 
-      {/* Explore Indicator - Center Bottom */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute z-10 left-1/2 -translate-x-1/2"
+      {/* Bottom Gradient - connects smoothly with ImageSlider */}
+      <div
+        className="absolute left-0 right-0 bottom-0 pointer-events-none"
         style={{
-          bottom: '60px',
+          height: '320px',
+          background: 'linear-gradient(0deg, #132019 0%, rgba(19, 32, 25, 0.8) 40%, rgba(19, 32, 25, 0) 100%)',
+          zIndex: 26,
         }}
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center"
-          style={{ gap: '8px' }}
-        >
-          <span
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              fontSize: '11px',
-              letterSpacing: '3px',
-              textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.5)',
-            }}
-          >
-            Explore
-          </span>
-          <div
-            style={{
-              width: '1px',
-              height: '40px',
-              background: 'linear-gradient(to bottom, rgba(255,255,255,0.6), transparent)',
-            }}
-          />
-        </motion.div>
-      </motion.div>
+      />
 
       {/* Leader Cards - Bottom Right Corner */}
       <motion.div
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 1.6 }}
-        className="absolute flex flex-row items-center z-20"
-        style={{
-          right: '20px',
-          bottom: '40px',
-          gap: '21px',
-        }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="absolute hidden lg:flex flex-row items-center right-4 lg:right-5 bottom-10 lg:bottom-10 gap-4 lg:gap-5"
+        style={{ zIndex: 30 }}
       >
         {leaders.map((leader, index) => (
           <motion.div
             key={leader.name}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.8 + index * 0.2 }}
-            className="flex flex-col justify-center items-center"
+            transition={{ duration: 0.6, delay: 0.7 + index * 0.2 }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            className="flex flex-col justify-center items-center w-[150px] lg:w-[183px] p-3 lg:p-[18px] gap-4 lg:gap-5 rounded-xl cursor-pointer"
             style={{
-              width: '183px',
-              height: '252.45px',
-              padding: '18px',
-              gap: '20px',
-              background: 'rgba(19, 32, 25, 0.3)',
-              border: '1px solid #D4AF37',
-              backdropFilter: 'blur(8px)',
-              borderRadius: '12.8px',
+              background: 'rgba(0, 0, 0, 0.25)',
+              border: '1px solid rgba(212, 175, 55, 0.5)',
+              backdropFilter: 'blur(0.5px)',
+              WebkitBackdropFilter: 'blur(0.5px)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
             }}
           >
             {/* Profile Image */}
             <div
-              className="relative overflow-hidden"
+              className="relative overflow-hidden w-20 h-20 lg:w-[115px] lg:h-[115px] rounded-full"
               style={{
-                width: '115px',
-                height: '115px',
-                background: 'rgba(245, 242, 233, 0.11)',
-                backdropFilter: 'blur(0.46px)',
-                borderRadius: '125.35px',
-                border: '2px solid rgba(212, 175, 55, 0.3)',
+                background: 'transparent',
+                border: '2px solid rgba(212, 175, 55, 0.5)',
+                boxShadow: '0 4px 20px rgba(212, 175, 55, 0.2)',
               }}
             >
               <Image
@@ -305,41 +196,90 @@ const Hero = () => {
                 alt={leader.name}
                 fill
                 className="object-cover object-top"
+                sizes="(max-width: 1024px) 80px, 115px"
               />
             </div>
 
             {/* Name and Title */}
-            <div
-              className="flex flex-col justify-center items-center"
-              style={{ gap: '10px' }}
-            >
+            <div className="flex flex-col justify-center items-center gap-1">
               <p
-                className="text-center capitalize"
+                className="text-center capitalize text-base lg:text-lg"
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 700,
-                  fontSize: '16px',
-                  lineHeight: '20px',
+                  lineHeight: '24px',
                   color: '#F5F2E9',
                 }}
               >
                 {leader.name}
               </p>
               <p
-                className="text-center"
+                className="text-center text-sm lg:text-[15px]"
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
-                  fontWeight: 400,
-                  fontSize: '13px',
-                  lineHeight: '18px',
-                  color: 'rgba(245, 242, 233, 0.7)',
+                  fontWeight: 500,
+                  lineHeight: '20px',
+                  color: 'rgba(245, 242, 233, 0.85)',
                 }}
               >
                 {leader.title}
               </p>
+              <p
+                className="text-center text-xs lg:text-[13px]"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 400,
+                  lineHeight: '18px',
+                  color: 'rgba(245, 242, 233, 0.7)',
+                }}
+              >
+                {leader.subtitle}
+              </p>
             </div>
           </motion.div>
         ))}
+      </motion.div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute left-1/2 -translate-x-1/2 bottom-6 md:bottom-8"
+        style={{ zIndex: 30 }}
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-2"
+        >
+          <span
+            className="text-[10px] md:text-[11px] tracking-[3px] uppercase"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              color: 'rgba(255,255,255,0.4)',
+            }}
+          >
+            Explore
+          </span>
+          <svg
+            width="16"
+            height="24"
+            viewBox="0 0 16 24"
+            fill="none"
+            className="opacity-40"
+          >
+            <rect x="1" y="1" width="14" height="22" rx="7" stroke="white" strokeWidth="1"/>
+            <motion.circle
+              cx="8"
+              cy="8"
+              r="2"
+              fill="white"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            />
+          </svg>
+        </motion.div>
       </motion.div>
     </section>
   );

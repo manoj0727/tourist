@@ -1,5 +1,5 @@
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
+import HeroSlider from '@/components/HeroSlider';
 import ImageSlider from '@/components/ImageSlider';
 import Adventures from '@/components/Adventures';
 import HiddenPlaces from '@/components/HiddenPlaces';
@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      <Hero />
+      <HeroSlider />
       <ImageSlider />
       <Adventures />
       <HiddenPlaces />

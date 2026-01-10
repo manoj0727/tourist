@@ -49,10 +49,8 @@ export default function NewsUpdates() {
 
   return (
     <section
-      className="relative overflow-hidden mx-auto"
+      className="relative overflow-hidden mx-auto w-full max-w-[1440px] min-h-[600px] md:min-h-[800px] lg:min-h-[964px]"
       style={{
-        width: '1440px',
-        height: '964px',
         background: '#17261E',
       }}
     >
@@ -93,14 +91,7 @@ export default function NewsUpdates() {
 
       {/* Main Content */}
       <div
-        className="absolute flex flex-col items-start"
-        style={{
-          width: '1250px',
-          height: '663px',
-          left: 'calc(50% - 1250px/2)',
-          top: 'calc(50% - 663px/2 - 16px)',
-          gap: '60px',
-        }}
+        className="relative md:absolute flex flex-col items-start w-full max-w-[1250px] mx-auto px-4 sm:px-6 lg:px-0 py-8 md:py-0 md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 gap-6 md:gap-10 lg:gap-[60px]"
       >
         {/* Header Row */}
         <motion.div
@@ -108,11 +99,7 @@ export default function NewsUpdates() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex justify-between items-end"
-          style={{
-            width: '1250px',
-            height: '78px',
-          }}
+          className="flex flex-col sm:flex-row justify-between items-start sm:items-end w-full max-w-[1250px] gap-4 sm:gap-0"
         >
           {/* Title */}
           <div
@@ -148,14 +135,10 @@ export default function NewsUpdates() {
           <motion.button
             whileHover={{ scale: 1.02, background: 'rgba(212, 175, 55, 0.6)' }}
             whileTap={{ scale: 0.98 }}
-            className="flex justify-center items-center"
+            className="flex justify-center items-center w-full sm:w-[130px] h-12 px-6 py-3 rounded-md"
             style={{
-              padding: '12px 24px',
-              width: '130px',
-              height: '48px',
               background: 'rgba(212, 175, 55, 0.44)',
               backdropFilter: 'blur(2px)',
-              borderRadius: '6px',
             }}
           >
             <span
@@ -175,11 +158,7 @@ export default function NewsUpdates() {
 
         {/* Card Container */}
         <div
-          className="relative"
-          style={{
-            width: '1250px',
-            height: '525px',
-          }}
+          className="relative w-full max-w-[1250px] h-auto min-h-[400px] sm:min-h-[450px] md:min-h-[500px] lg:min-h-[525px]"
         >
           <AnimatePresence mode="wait">
             <motion.div
@@ -188,23 +167,15 @@ export default function NewsUpdates() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.5 }}
-              className="absolute"
+              className="absolute inset-0 w-full max-w-[1250px] min-h-[400px] sm:min-h-[450px] md:min-h-[500px] lg:min-h-[525px] rounded-2xl overflow-hidden"
               style={{
-                width: '1250px',
-                height: '525px',
                 background: '#F5F2E9',
-                borderRadius: '24px',
-                overflow: 'hidden',
               }}
             >
               {/* Decorative Background Image */}
               <div
-                className="absolute"
+                className="absolute hidden md:block w-full max-w-[895px] h-full left-0 md:left-[-20%] lg:left-[-15%] top-0"
                 style={{
-                  width: '895px',
-                  height: '548px',
-                  left: 'calc(50% - 895px/2 - 290px)',
-                  top: 'calc(50% - 548px/2)',
                   mixBlendMode: 'overlay',
                   opacity: 0.5,
                 }}
@@ -219,13 +190,7 @@ export default function NewsUpdates() {
 
               {/* Right Side Image */}
               <div
-                className="absolute"
-                style={{
-                  width: '788px',
-                  height: '525px',
-                  left: '566px',
-                  top: 0,
-                }}
+                className="absolute w-full h-[200px] sm:h-[250px] md:w-[50%] lg:w-[788px] md:h-full right-0 top-0 md:left-auto md:right-0"
               >
                 <Image
                   src={currentNews.image}
@@ -237,13 +202,7 @@ export default function NewsUpdates() {
 
               {/* Content Container */}
               <div
-                className="absolute flex flex-col items-start"
-                style={{
-                  padding: '47px 60px 50px 45px',
-                  gap: '3px',
-                  left: 0,
-                  top: 0,
-                }}
+                className="absolute flex flex-col items-start p-4 sm:p-6 md:p-8 lg:p-[47px_60px_50px_45px] gap-1 left-0 top-[200px] sm:top-[250px] md:top-0 w-full md:w-[55%] lg:w-auto"
               >
                 {/* Category */}
                 <p
@@ -310,15 +269,11 @@ export default function NewsUpdates() {
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="absolute flex justify-center items-center"
+                  className="absolute flex justify-center items-center w-full sm:w-[228px] h-10 left-4 sm:left-6 md:left-8 lg:left-[312px] bottom-16 md:bottom-[73px] lg:bottom-auto lg:top-[452px] rounded-lg"
                   style={{
-                    width: '228px',
-                    height: '40px',
-                    left: '312px',
-                    top: '452px',
                     background: 'rgba(255, 0, 4, 0.7)',
                     backdropFilter: 'blur(14.76px)',
-                    borderRadius: '8px',
+                    maxWidth: 'calc(100% - 32px)',
                   }}
                 >
                   <span
@@ -337,12 +292,7 @@ export default function NewsUpdates() {
 
               {/* Navigation Buttons */}
               <div
-                className="absolute flex items-center"
-                style={{
-                  left: '45px',
-                  top: '451px',
-                  gap: '12px',
-                }}
+                className="absolute flex items-center left-4 sm:left-6 md:left-8 lg:left-[45px] bottom-4 md:bottom-[24px] lg:bottom-auto lg:top-[451px] gap-3"
               >
                 {/* Previous Button */}
                 <motion.button

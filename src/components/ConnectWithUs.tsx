@@ -9,70 +9,44 @@ const socialCards = [
     title: 'Facebook',
     description: 'Follow updates, photos and announcements from Mount Abu Nagar Parishad.',
     image: '/images/13-1.png',
-    imageHeight: '358px',
-    cardWidth: '409px',
-    cardHeight: '482px',
-    position: { left: '0px', top: '0px' },
   },
   {
     id: 'instagram',
     title: 'Instagram',
     description: 'See visual stories of events, initiatives and life in Mount Abu.',
     image: '/images/13-3.jpg',
-    imageHeight: '127px',
-    cardWidth: '409px',
-    cardHeight: '234px',
-    position: { left: '430px', top: '0px' },
   },
   {
     id: 'youtube',
     title: 'YouTube',
     description: 'Watch event coverage, public messages and awareness videos.',
     image: '/images/13-2.jpg',
-    imageHeight: '241px',
-    cardWidth: '409px',
-    cardHeight: '362px',
-    position: { left: '860px', top: '0px' },
   },
   {
     id: 'twitter',
     title: 'Twitter',
     description: 'Get quick alerts, notices and service updates in real time.',
     image: '/images/13-4.png',
-    imageHeight: '127px',
-    cardWidth: '409px',
-    cardHeight: '234px',
-    position: { left: '430px', top: '248px' },
   },
   {
     id: 'helpline',
     title: 'Helpline',
     description: 'Call for service assistance, complaints or emergency municipal support.',
     image: '/images/13-5.jpg',
-    imageHeight: '241px',
-    cardWidth: '409px',
-    cardHeight: '350px',
-    position: { left: '860px', top: '379px' },
   },
   {
     id: 'address',
     title: 'Office Address',
     description: 'Visit the Nagar Parishad office for in-person support and submissions.',
     image: '/images/13-6.jpg',
-    imageHeight: '136px',
-    cardWidth: '839px',
-    cardHeight: '234px',
-    position: { left: '0px', top: '495px' },
   },
 ];
 
 export default function ConnectWithUs() {
   return (
     <section
-      className="relative overflow-hidden mx-auto"
+      className="relative overflow-hidden mx-auto w-full max-w-[1440px] min-h-[800px] lg:min-h-[1044px] py-12 md:py-16 lg:py-0"
       style={{
-        width: '1440px',
-        height: '1044px',
         background: '#121E17',
       }}
     >
@@ -94,161 +68,312 @@ export default function ConnectWithUs() {
 
       {/* Top Gradient */}
       <div
-        className="absolute left-0 right-0 top-0"
+        className="absolute left-0 right-0 top-0 h-[120px] md:h-[180px] lg:h-[220px]"
         style={{
-          height: '220px',
           background: 'linear-gradient(180deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
         }}
       />
 
       {/* Bottom Gradient - Dark Green */}
       <div
-        className="absolute left-0 right-0 bottom-0"
+        className="absolute left-0 right-0 bottom-0 h-[120px] md:h-[180px] lg:h-[218px]"
         style={{
-          height: '218px',
           background: 'linear-gradient(0deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
         }}
       />
 
       {/* Bottom Gradient - Brown/Olive transition to footer */}
       <div
-        className="absolute left-0 right-0 bottom-0"
+        className="absolute left-0 right-0 bottom-0 h-[150px] md:h-[220px] lg:h-[285px]"
         style={{
-          height: '285px',
           background: 'linear-gradient(0deg, #4C4832 0%, rgba(76, 72, 50, 0) 100%)',
         }}
       />
 
       {/* Main Content */}
-      <div
-        className="absolute flex flex-col items-center"
-        style={{
-          width: '1270px',
-          height: '867px',
-          left: 'calc(50% - 1270px/2)',
-          top: 'calc(50% - 867px/2)',
-          gap: '60px',
-        }}
-      >
+      <div className="relative z-10 flex flex-col items-center w-full max-w-[1270px] mx-auto px-4 sm:px-6 lg:px-0 lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 gap-8 md:gap-12 lg:gap-[60px]">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col justify-center items-center"
-          style={{
-            width: '1270px',
-            gap: '26px',
-          }}
+          className="flex flex-col justify-center items-center w-full gap-4 md:gap-5 lg:gap-[26px]"
         >
           <p
-            className="baron-neue"
+            className="baron-neue text-lg sm:text-xl md:text-2xl text-center"
             style={{
-              fontSize: '24px',
               lineHeight: '24px',
-              textAlign: 'center',
               color: '#D4AF37',
             }}
           >
             Connect With Us
           </p>
           <h2
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] text-center capitalize text-white px-2"
             style={{
               fontFamily: "'Montserrat', sans-serif",
               fontWeight: 500,
-              fontSize: '40px',
-              lineHeight: '54px',
-              textAlign: 'center',
-              textTransform: 'capitalize',
-              color: '#FFFFFF',
+              lineHeight: '1.35',
             }}
           >
             Stay updated and reach out anytime
           </h2>
         </motion.div>
 
-        {/* Cards Grid */}
-        <div
-          className="relative"
-          style={{
-            width: '1270px',
-            height: '729px',
-          }}
-        >
-          {socialCards.map((card, index) => (
-            <motion.div
-              key={card.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              className="absolute"
-              style={{
-                width: card.cardWidth,
-                height: card.cardHeight,
-                left: card.position.left,
-                top: card.position.top,
-                background: '#F5F2E9',
-                border: '0.71px solid rgba(0, 0, 0, 0.2)',
-                borderRadius: '9px',
-                overflow: 'hidden',
-                cursor: 'pointer',
-              }}
-            >
-              {/* Card Image */}
-              <div
-                className="relative w-full"
+        {/* Cards Grid - Responsive Layout */}
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-[21px]">
+          {/* Facebook Card - Full height on desktop */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            className="bg-[#F5F2E9] rounded-[9px] overflow-hidden cursor-pointer border border-black/20 sm:row-span-2"
+          >
+            <div className="relative w-full h-[200px] sm:h-[280px] lg:h-[358px] rounded-b-[20px] overflow-hidden shadow-[inset_0px_-8px_40px_rgba(0,0,0,0.2)]">
+              <Image
+                src="/images/13-1.png"
+                alt="Facebook"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="flex flex-col items-start p-4 lg:p-[16px_19px] gap-2 lg:gap-[9px]">
+              <h3
+                className="text-lg sm:text-xl lg:text-[23px] text-black"
                 style={{
-                  height: card.imageHeight,
-                  borderRadius: '0 0 20px 20px',
-                  overflow: 'hidden',
-                  boxShadow: 'inset 0px -8px 40px rgba(0, 0, 0, 0.2)',
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 600,
+                  lineHeight: '125%',
                 }}
               >
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+                Facebook
+              </h3>
+              <p
+                className="text-sm lg:text-[14px] max-w-[357px]"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 400,
+                  lineHeight: '120%',
+                  color: 'rgba(0, 0, 0, 0.4)',
+                }}
+              >
+                Follow updates, photos and announcements from Mount Abu Nagar Parishad.
+              </p>
+            </div>
+          </motion.div>
 
-              {/* Card Content */}
-              <div
-                className="flex flex-col items-start"
+          {/* Instagram Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            className="bg-[#F5F2E9] rounded-[9px] overflow-hidden cursor-pointer border border-black/20"
+          >
+            <div className="relative w-full h-[120px] sm:h-[100px] lg:h-[127px] rounded-b-[20px] overflow-hidden shadow-[inset_0px_-8px_40px_rgba(0,0,0,0.2)]">
+              <Image
+                src="/images/13-3.jpg"
+                alt="Instagram"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="flex flex-col items-start p-4 lg:p-[16px_19px] gap-2 lg:gap-[9px]">
+              <h3
+                className="text-lg sm:text-xl lg:text-[23px] text-black"
                 style={{
-                  padding: '16px 19px',
-                  gap: '9px',
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 600,
+                  lineHeight: '125%',
                 }}
               >
-                <h3
-                  style={{
-                    fontFamily: "'Montserrat', sans-serif",
-                    fontWeight: 600,
-                    fontSize: '23px',
-                    lineHeight: '125%',
-                    color: '#000000',
-                  }}
-                >
-                  {card.title}
-                </h3>
-                <p
-                  style={{
-                    fontFamily: "'Montserrat', sans-serif",
-                    fontWeight: 400,
-                    fontSize: '14px',
-                    lineHeight: '120%',
-                    color: 'rgba(0, 0, 0, 0.4)',
-                    maxWidth: card.id === 'address' ? '564px' : '357px',
-                  }}
-                >
-                  {card.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+                Instagram
+              </h3>
+              <p
+                className="text-sm lg:text-[14px] max-w-[357px]"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 400,
+                  lineHeight: '120%',
+                  color: 'rgba(0, 0, 0, 0.4)',
+                }}
+              >
+                See visual stories of events, initiatives and life in Mount Abu.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* YouTube Card - Tall on desktop */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            className="bg-[#F5F2E9] rounded-[9px] overflow-hidden cursor-pointer border border-black/20"
+          >
+            <div className="relative w-full h-[180px] sm:h-[180px] lg:h-[241px] rounded-b-[20px] overflow-hidden shadow-[inset_0px_-8px_40px_rgba(0,0,0,0.2)]">
+              <Image
+                src="/images/13-2.jpg"
+                alt="YouTube"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="flex flex-col items-start p-4 lg:p-[16px_19px] gap-2 lg:gap-[9px]">
+              <h3
+                className="text-lg sm:text-xl lg:text-[23px] text-black"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 600,
+                  lineHeight: '125%',
+                }}
+              >
+                YouTube
+              </h3>
+              <p
+                className="text-sm lg:text-[14px] max-w-[357px]"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 400,
+                  lineHeight: '120%',
+                  color: 'rgba(0, 0, 0, 0.4)',
+                }}
+              >
+                Watch event coverage, public messages and awareness videos.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Twitter Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            className="bg-[#F5F2E9] rounded-[9px] overflow-hidden cursor-pointer border border-black/20"
+          >
+            <div className="relative w-full h-[120px] sm:h-[100px] lg:h-[127px] rounded-b-[20px] overflow-hidden shadow-[inset_0px_-8px_40px_rgba(0,0,0,0.2)]">
+              <Image
+                src="/images/13-4.png"
+                alt="Twitter"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="flex flex-col items-start p-4 lg:p-[16px_19px] gap-2 lg:gap-[9px]">
+              <h3
+                className="text-lg sm:text-xl lg:text-[23px] text-black"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 600,
+                  lineHeight: '125%',
+                }}
+              >
+                Twitter
+              </h3>
+              <p
+                className="text-sm lg:text-[14px] max-w-[357px]"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 400,
+                  lineHeight: '120%',
+                  color: 'rgba(0, 0, 0, 0.4)',
+                }}
+              >
+                Get quick alerts, notices and service updates in real time.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Helpline Card - Tall on desktop */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            className="bg-[#F5F2E9] rounded-[9px] overflow-hidden cursor-pointer border border-black/20"
+          >
+            <div className="relative w-full h-[180px] sm:h-[180px] lg:h-[241px] rounded-b-[20px] overflow-hidden shadow-[inset_0px_-8px_40px_rgba(0,0,0,0.2)]">
+              <Image
+                src="/images/13-5.jpg"
+                alt="Helpline"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="flex flex-col items-start p-4 lg:p-[16px_19px] gap-2 lg:gap-[9px]">
+              <h3
+                className="text-lg sm:text-xl lg:text-[23px] text-black"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 600,
+                  lineHeight: '125%',
+                }}
+              >
+                Helpline
+              </h3>
+              <p
+                className="text-sm lg:text-[14px] max-w-[357px]"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 400,
+                  lineHeight: '120%',
+                  color: 'rgba(0, 0, 0, 0.4)',
+                }}
+              >
+                Call for service assistance, complaints or emergency municipal support.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Office Address Card - Wide on desktop (spans 2 columns) */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            whileHover={{ y: -5, transition: { duration: 0.2 } }}
+            className="bg-[#F5F2E9] rounded-[9px] overflow-hidden cursor-pointer border border-black/20 sm:col-span-2 lg:col-span-2"
+          >
+            <div className="relative w-full h-[120px] sm:h-[100px] lg:h-[136px] rounded-b-[20px] overflow-hidden shadow-[inset_0px_-8px_40px_rgba(0,0,0,0.2)]">
+              <Image
+                src="/images/13-6.jpg"
+                alt="Office Address"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="flex flex-col items-start p-4 lg:p-[16px_19px] gap-2 lg:gap-[9px]">
+              <h3
+                className="text-lg sm:text-xl lg:text-[23px] text-black"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 600,
+                  lineHeight: '125%',
+                }}
+              >
+                Office Address
+              </h3>
+              <p
+                className="text-sm lg:text-[14px] max-w-full lg:max-w-[564px]"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontWeight: 400,
+                  lineHeight: '120%',
+                  color: 'rgba(0, 0, 0, 0.4)',
+                }}
+              >
+                Visit the Nagar Parishad office for in-person support and submissions.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
 

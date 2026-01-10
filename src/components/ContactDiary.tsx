@@ -34,38 +34,26 @@ function ContactTable({ contacts, delay = 0 }: { contacts: typeof contactsTable1
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="flex flex-col"
+      className="flex flex-col w-full max-w-[600px] rounded-[14px] overflow-hidden shrink-0"
       style={{
-        width: '600px',
         border: '0.84px solid rgba(0, 0, 0, 0.1)',
-        borderRadius: '14px',
-        overflow: 'hidden',
-        flexShrink: 0,
       }}
     >
       {/* Table Header */}
-      <div className="flex" style={{ width: '100%', height: '60px' }}>
+      <div className="flex w-full h-[50px] md:h-[60px]">
         {tableHeaders.map((header) => (
           <div
             key={header}
-            className="flex justify-center items-center"
+            className="flex justify-center items-center flex-1 h-[50px] md:h-[60px] px-2 sm:px-4 md:px-5 py-3 md:py-[17px]"
             style={{
-              flex: 1,
-              height: '60px',
-              padding: '17px 20px',
               background: '#D49D37',
               border: '0.84px solid rgba(0, 0, 0, 0.1)',
             }}
           >
             <span
+              className="text-[11px] sm:text-[13px] md:text-[15px] font-semibold leading-5 md:leading-6 text-white uppercase tracking-[0.5px] text-center"
               style={{
                 fontFamily: "'Montserrat', sans-serif",
-                fontWeight: 600,
-                fontSize: '15px',
-                lineHeight: '24px',
-                color: '#FFFFFF',
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px',
               }}
             >
               {header}
@@ -75,7 +63,7 @@ function ContactTable({ contacts, delay = 0 }: { contacts: typeof contactsTable1
       </div>
 
       {/* Table Body */}
-      <div className="flex flex-col" style={{ width: '100%' }}>
+      <div className="flex flex-col w-full">
         {contacts.map((contact, index) => (
           <motion.div
             key={contact.id}
@@ -83,27 +71,20 @@ function ContactTable({ contacts, delay = 0 }: { contacts: typeof contactsTable1
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: 0.03 * index }}
-            className="flex"
-            style={{ width: '100%', height: '69px' }}
+            className="flex w-full h-[60px] sm:h-[65px] md:h-[69px]"
           >
             {/* Name */}
             <div
-              className="flex items-center justify-center"
+              className="flex items-center justify-center flex-1 h-full px-2 sm:px-3 md:px-4 py-4 md:py-6"
               style={{
-                flex: 1,
-                height: '69px',
-                padding: '24px 16px',
                 background: 'rgba(0, 0, 0, 0.2)',
                 border: '0.84px solid rgba(255, 255, 255, 0.1)',
               }}
             >
               <span
+                className="text-[12px] sm:text-[14px] md:text-[16px] font-medium leading-4 md:leading-5 text-center"
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
-                  fontWeight: 500,
-                  fontSize: '16px',
-                  lineHeight: '20px',
-                  textAlign: 'center',
                   color: '#F5F2E9',
                 }}
               >
@@ -113,22 +94,16 @@ function ContactTable({ contacts, delay = 0 }: { contacts: typeof contactsTable1
 
             {/* Post */}
             <div
-              className="flex items-center justify-center"
+              className="flex items-center justify-center flex-1 h-full px-2 sm:px-3 md:px-4 py-4 md:py-6"
               style={{
-                flex: 1,
-                height: '69px',
-                padding: '24px 16px',
                 background: 'rgba(0, 0, 0, 0.2)',
                 border: '0.84px solid rgba(255, 255, 255, 0.1)',
               }}
             >
               <span
+                className="text-[11px] sm:text-[13px] md:text-[15px] font-normal leading-4 md:leading-5 text-center"
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
-                  fontWeight: 400,
-                  fontSize: '15px',
-                  lineHeight: '20px',
-                  textAlign: 'center',
                   color: '#F5F2E9',
                 }}
               >
@@ -138,22 +113,16 @@ function ContactTable({ contacts, delay = 0 }: { contacts: typeof contactsTable1
 
             {/* Department */}
             <div
-              className="flex items-center justify-center"
+              className="flex items-center justify-center flex-1 h-full px-2 sm:px-3 md:px-4 py-4 md:py-6"
               style={{
-                flex: 1,
-                height: '69px',
-                padding: '24px 16px',
                 background: 'rgba(0, 0, 0, 0.2)',
                 border: '0.84px solid rgba(255, 255, 255, 0.1)',
               }}
             >
               <span
+                className="text-[11px] sm:text-[13px] md:text-[15px] font-normal leading-4 md:leading-5 text-center"
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
-                  fontWeight: 400,
-                  fontSize: '15px',
-                  lineHeight: '20px',
-                  textAlign: 'center',
                   color: '#F5F2E9',
                 }}
               >
@@ -170,11 +139,7 @@ function ContactTable({ contacts, delay = 0 }: { contacts: typeof contactsTable1
 export default function ContactDiary() {
   return (
     <section
-      className="relative overflow-hidden mx-auto"
-      style={{
-        width: '1440px',
-        height: '1132px',
-      }}
+      className="relative overflow-hidden mx-auto w-full max-w-[1440px] min-h-[900px] md:min-h-[1132px] lg:h-[1132px]"
     >
       {/* Background Image - clearly visible */}
       <div className="absolute inset-0">
@@ -196,40 +161,31 @@ export default function ContactDiary() {
 
       {/* Top Gradient - connects with ConnectWithUs bottom */}
       <div
-        className="absolute left-0 right-0 top-0"
+        className="absolute left-0 right-0 top-0 h-[120px] md:h-[218px]"
         style={{
-          height: '218px',
           background: 'linear-gradient(180deg, #4C4832 0%, rgba(76, 72, 50, 0) 100%)',
         }}
       />
 
       {/* Bottom Gradient - connects smoothly with Footer cloud border */}
       <div
-        className="absolute left-0 right-0 bottom-0"
+        className="absolute left-0 right-0 bottom-0 h-[200px] md:h-[300px]"
         style={{
-          height: '300px',
           background: 'linear-gradient(0deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
         }}
       />
 
       {/* Extra bottom solid color for seamless connection */}
       <div
-        className="absolute left-0 right-0 bottom-0"
+        className="absolute left-0 right-0 bottom-0 h-[40px] md:h-[60px]"
         style={{
-          height: '60px',
           background: '#132019',
         }}
       />
 
       {/* Main Content */}
       <div
-        className="absolute flex flex-col items-center"
-        style={{
-          width: '1280px',
-          left: 'calc(50% - 1280px/2)',
-          top: '110px',
-          gap: '60px',
-        }}
+        className="relative md:absolute flex flex-col items-center w-full max-w-[1280px] px-4 sm:px-6 md:px-8 lg:px-0 mx-auto md:left-1/2 md:-translate-x-1/2 pt-16 md:pt-0 md:top-[110px] gap-8 md:gap-[60px] pb-20 md:pb-0"
       >
         {/* Header */}
         <motion.div
@@ -237,46 +193,29 @@ export default function ContactDiary() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col justify-center items-center"
-          style={{
-            width: '100%',
-            gap: '26px',
-          }}
+          className="flex flex-col justify-center items-center w-full gap-4 md:gap-[26px]"
         >
           <p
-            className="baron-neue"
+            className="baron-neue text-lg md:text-2xl leading-6 text-center"
             style={{
-              fontSize: '24px',
-              lineHeight: '24px',
-              textAlign: 'center',
               color: '#D4AF37',
             }}
           >
             Contact Diary
           </p>
           <h2
+            className="text-2xl sm:text-3xl md:text-[40px] font-medium leading-8 sm:leading-10 md:leading-[54px] text-center capitalize text-white max-w-[731px] px-2"
             style={{
               fontFamily: "'Montserrat', sans-serif",
-              fontWeight: 500,
-              fontSize: '40px',
-              lineHeight: '54px',
-              textAlign: 'center',
-              textTransform: 'capitalize',
-              color: '#FFFFFF',
-              maxWidth: '731px',
             }}
           >
             Find the right municipal officer and contact number in one place.
           </h2>
         </motion.div>
 
-        {/* Tables Container - Side by Side */}
+        {/* Tables Container - Side by Side on desktop, stacked on mobile */}
         <div
-          className="flex items-start justify-center"
-          style={{
-            width: '100%',
-            gap: '40px',
-          }}
+          className="flex flex-col lg:flex-row items-center lg:items-start justify-center w-full gap-6 md:gap-10"
         >
           <ContactTable contacts={contactsTable1} delay={0} />
           <ContactTable contacts={contactsTable2} delay={0.2} />

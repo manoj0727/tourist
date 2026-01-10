@@ -63,10 +63,8 @@ const guidelines = [
 export default function InfoGuidelines() {
   return (
     <section
-      className="relative overflow-hidden mx-auto"
+      className="relative overflow-hidden mx-auto w-full max-w-[1440px] min-h-[700px] md:min-h-[975px] py-12 md:py-0"
       style={{
-        width: '1440px',
-        height: '975px',
         background: '#17261E',
       }}
     >
@@ -101,32 +99,23 @@ export default function InfoGuidelines() {
 
       {/* Left Gradient */}
       <div
-        className="absolute left-0 top-0 bottom-0"
+        className="absolute left-0 top-0 bottom-0 hidden md:block w-[100px] lg:w-[212px]"
         style={{
-          width: '212px',
           background: 'linear-gradient(90deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
         }}
       />
 
       {/* Right Gradient */}
       <div
-        className="absolute right-0 top-0 bottom-0"
+        className="absolute right-0 top-0 bottom-0 hidden md:block w-[100px] lg:w-[212px]"
         style={{
-          width: '212px',
           background: 'linear-gradient(270deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
         }}
       />
 
       {/* Main Content */}
       <div
-        className="absolute flex flex-col items-center"
-        style={{
-          width: '1190px',
-          height: '740px',
-          left: 'calc(50% - 1190px/2)',
-          top: 'calc(50% - 740px/2)',
-          gap: '60px',
-        }}
+        className="relative md:absolute flex flex-col items-center w-full max-w-[1190px] px-4 sm:px-6 md:px-8 lg:px-0 left-0 right-0 mx-auto md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 gap-8 md:gap-[60px]"
       >
         {/* Header */}
         <motion.div
@@ -134,31 +123,22 @@ export default function InfoGuidelines() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col justify-center items-center"
-          style={{
-            width: '1190px',
-            gap: '26px',
-          }}
+          className="flex flex-col justify-center items-center w-full max-w-[1190px] gap-4 md:gap-[26px]"
         >
           <p
-            className="baron-neue"
+            className="baron-neue text-lg md:text-2xl text-center"
             style={{
-              fontSize: '24px',
-              lineHeight: '24px',
-              textAlign: 'center',
               color: '#D4AF37',
             }}
           >
             All you need
           </p>
           <h2
+            className="text-2xl sm:text-3xl md:text-4xl text-center capitalize"
             style={{
               fontFamily: "'Montserrat', sans-serif",
               fontWeight: 500,
-              fontSize: '40px',
-              lineHeight: '54px',
-              textAlign: 'center',
-              textTransform: 'capitalize',
+              lineHeight: '135%',
               color: '#FFFFFF',
             }}
           >
@@ -168,19 +148,11 @@ export default function InfoGuidelines() {
 
         {/* Cards Grid */}
         <div
-          className="flex flex-col items-start"
-          style={{
-            width: '1190px',
-            gap: '40px',
-          }}
+          className="flex flex-col items-center md:items-start w-full max-w-[1190px] gap-6 md:gap-10"
         >
           {/* Row 1 */}
           <div
-            className="flex items-start"
-            style={{
-              width: '1190px',
-              gap: '40px',
-            }}
+            className="flex flex-col md:flex-row items-center md:items-start justify-center w-full max-w-[1190px] gap-6 md:gap-10"
           >
             {guidelines.slice(0, 3).map((item, index) => (
               <GuidelineCard key={item.id} item={item} index={index} />
@@ -189,11 +161,7 @@ export default function InfoGuidelines() {
 
           {/* Row 2 */}
           <div
-            className="flex items-start"
-            style={{
-              width: '1190px',
-              gap: '40px',
-            }}
+            className="flex flex-col md:flex-row items-center md:items-start justify-center w-full max-w-[1190px] gap-6 md:gap-10"
           >
             {guidelines.slice(3, 6).map((item, index) => (
               <GuidelineCard key={item.id} item={item} index={index + 3} />
@@ -202,11 +170,7 @@ export default function InfoGuidelines() {
 
           {/* Row 3 */}
           <div
-            className="flex items-start"
-            style={{
-              width: '1190px',
-              gap: '40px',
-            }}
+            className="flex flex-col md:flex-row items-center md:items-start justify-center w-full max-w-[1190px] gap-6 md:gap-10"
           >
             {guidelines.slice(6, 9).map((item, index) => (
               <GuidelineCard key={item.id} item={item} index={index + 6} />
@@ -249,35 +213,24 @@ function GuidelineCard({
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: 0.05 * index }}
       whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-      className="flex flex-col justify-center items-center"
+      className="flex flex-col justify-center items-center w-full sm:w-[320px] md:w-[calc(33.333%-27px)] lg:w-[370px] h-[160px] md:h-[174px] py-3 md:py-[14px] gap-1.5 rounded-xl cursor-pointer"
       style={{
-        width: '370px',
-        height: '174px',
-        padding: '14px 0 18px',
-        gap: '6px',
         background:
           'linear-gradient(0deg, rgba(245, 242, 233, 0.06), rgba(245, 242, 233, 0.06)), linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0) 100%)',
         backdropFilter: 'blur(0.5px)',
-        borderRadius: '13.6px',
-        cursor: 'pointer',
       }}
     >
       {/* Title */}
       <div
-        className="flex justify-center items-center"
-        style={{
-          padding: '18px 19px',
-        }}
+        className="flex justify-center items-center px-4 py-3 md:px-[19px] md:py-[18px]"
       >
         <h3
+          className="w-full max-w-[221px] text-xl md:text-2xl text-center"
           style={{
             fontFamily: "'Montserrat', sans-serif",
             fontWeight: 500,
-            fontSize: '24px',
             lineHeight: '125%',
-            textAlign: 'center',
             color: '#FFFFFF',
-            width: '221px',
           }}
         >
           {item.title}
@@ -288,23 +241,18 @@ function GuidelineCard({
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="flex justify-center items-center"
+        className="flex justify-center items-center w-[200px] sm:w-[227px] h-10 px-3 py-2.5 rounded-lg"
         style={{
-          width: '227px',
-          height: '40px',
-          padding: '10px 3px',
           background: item.buttonColor,
           backdropFilter: 'blur(14.76px)',
-          borderRadius: '8px',
         }}
       >
         <span
+          className="text-sm md:text-base text-center"
           style={{
             fontFamily: "'Montserrat', sans-serif",
             fontWeight: 500,
-            fontSize: '16px',
             lineHeight: '125%',
-            textAlign: 'center',
             color: '#FFFFFF',
           }}
         >

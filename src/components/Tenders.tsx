@@ -66,10 +66,8 @@ const tableHeaders = [
 export default function Tenders() {
   return (
     <section
-      className="relative overflow-hidden mx-auto"
+      className="relative overflow-hidden mx-auto w-full max-w-[1440px] min-h-[800px] lg:min-h-[1211px] py-16 lg:py-0"
       style={{
-        width: '1440px',
-        height: '1211px',
         background: '#17261E',
       }}
     >
@@ -85,66 +83,42 @@ export default function Tenders() {
 
       {/* Top Gradient - connects with InfoGuidelines bottom */}
       <div
-        className="absolute left-0 right-0 top-0"
+        className="absolute left-0 right-0 top-0 h-[200px] lg:h-[350px]"
         style={{
-          height: '350px',
           background: 'linear-gradient(180deg, #0a0f0c 0%, rgba(10, 15, 12, 0) 100%)',
         }}
       />
 
       {/* Bottom Gradient */}
       <div
-        className="absolute left-0 right-0 bottom-0"
+        className="absolute left-0 right-0 bottom-0 h-[150px] lg:h-[212px]"
         style={{
-          height: '212px',
           background: 'linear-gradient(0deg, #132019 0%, rgba(19, 32, 25, 0) 100%)',
         }}
       />
 
       {/* Main Content */}
-      <div
-        className="absolute flex flex-col justify-center items-start"
-        style={{
-          width: '1261px',
-          height: '888px',
-          left: 'calc(50% - 1261px/2)',
-          top: 'calc(50% - 888px/2)',
-          gap: '80px',
-        }}
-      >
+      <div className="relative flex flex-col justify-center items-center w-full max-w-[1261px] mx-auto px-4 sm:px-6 lg:px-0 py-12 lg:py-0 lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 gap-10 lg:gap-20">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col justify-center items-center"
-          style={{
-            width: '1261px',
-            gap: '26px',
-          }}
+          className="flex flex-col justify-center items-center w-full gap-4 lg:gap-[26px]"
         >
           <p
-            className="baron-neue"
+            className="baron-neue text-lg sm:text-xl lg:text-2xl leading-6 text-center"
             style={{
-              fontSize: '24px',
-              lineHeight: '24px',
-              textAlign: 'center',
               color: '#D4AF37',
             }}
           >
             Tender
           </p>
           <h2
+            className="font-medium text-xl sm:text-2xl md:text-3xl lg:text-[40px] leading-tight lg:leading-[54px] text-center capitalize text-white max-w-[1006px]"
             style={{
               fontFamily: "'Montserrat', sans-serif",
-              fontWeight: 500,
-              fontSize: '40px',
-              lineHeight: '54px',
-              textAlign: 'center',
-              textTransform: 'capitalize',
-              color: '#FFFFFF',
-              maxWidth: '1006px',
             }}
           >
             View active municipal tenders with key details and NIT downloads.
@@ -157,37 +131,23 @@ export default function Tenders() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-col items-start"
-          style={{
-            width: '1261px',
-            borderRadius: '20px',
-            overflow: 'hidden',
-          }}
+          className="flex flex-col items-start w-full max-w-[1261px] rounded-xl lg:rounded-[20px] overflow-hidden"
         >
-          {/* Table Header */}
-          <div
-            className="flex items-center"
-            style={{ width: '1261px', height: '60px' }}
-          >
-            {tableHeaders.map((header, index) => (
+          {/* Table Header - Hidden on mobile */}
+          <div className="hidden lg:flex items-center w-full h-[60px]">
+            {tableHeaders.map((header) => (
               <div
                 key={header}
-                className="flex justify-center items-center"
+                className="flex justify-center items-center flex-1 h-[60px] px-5 py-4"
                 style={{
-                  flex: 1,
-                  height: '60px',
-                  padding: '17px 20px',
                   background: '#D49D37',
                   border: '0.84px solid rgba(0, 0, 0, 0.1)',
                 }}
               >
                 <span
+                  className="font-medium text-base leading-6 text-white"
                   style={{
                     fontFamily: "'Inter', sans-serif",
-                    fontWeight: 500,
-                    fontSize: '16px',
-                    lineHeight: '24px',
-                    color: '#FFFFFF',
                   }}
                 >
                   {header}
@@ -197,12 +157,7 @@ export default function Tenders() {
           </div>
 
           {/* Table Body */}
-          <div
-            className="flex flex-col items-start"
-            style={{
-              width: '1261px',
-            }}
-          >
+          <div className="flex flex-col items-start w-full">
             {tenders.map((tender, rowIndex) => (
               <motion.div
                 key={tender.id}
@@ -210,27 +165,38 @@ export default function Tenders() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.05 * rowIndex }}
-                className="flex items-center"
-                style={{ width: '1261px', height: '88px' }}
+                className="flex flex-col lg:flex-row items-stretch lg:items-center w-full lg:h-[88px]"
               >
-                {/* Tender Title */}
+                {/* Mobile Card Header */}
                 <div
-                  className="flex justify-center items-center"
+                  className="lg:hidden flex justify-between items-center w-full px-4 py-3"
                   style={{
-                    flex: 1,
-                    height: '88px',
-                    padding: '24px 20px',
+                    background: '#D49D37',
+                    border: '0.84px solid rgba(0, 0, 0, 0.1)',
+                  }}
+                >
+                  <span
+                    className="font-medium text-base text-white"
+                    style={{
+                      fontFamily: "'Montserrat', sans-serif",
+                    }}
+                  >
+                    {tender.title}
+                  </span>
+                </div>
+
+                {/* Tender Title - Desktop only */}
+                <div
+                  className="hidden lg:flex justify-center items-center flex-1 h-[88px] px-5 py-6"
+                  style={{
                     background: 'rgba(0, 0, 0, 0.4)',
                     border: '0.84px solid rgba(255, 255, 255, 0.1)',
                   }}
                 >
                   <span
+                    className="font-normal text-lg lg:text-xl leading-5 text-center"
                     style={{
                       fontFamily: "'Montserrat', sans-serif",
-                      fontWeight: 400,
-                      fontSize: '20px',
-                      lineHeight: '20px',
-                      textAlign: 'center',
                       color: '#F5F2E9',
                     }}
                   >
@@ -240,21 +206,19 @@ export default function Tenders() {
 
                 {/* Department */}
                 <div
-                  className="flex justify-center items-center"
+                  className="flex justify-between lg:justify-center items-center flex-1 min-h-[56px] lg:h-[88px] px-4 lg:px-5 py-3 lg:py-6"
                   style={{
-                    flex: 1,
-                    height: '88px',
-                    padding: '24px 20px',
                     background: 'rgba(0, 0, 0, 0.4)',
                     border: '0.84px solid rgba(255, 255, 255, 0.1)',
                   }}
                 >
+                  <span className="lg:hidden text-sm text-gray-400" style={{ fontFamily: "'Inter', sans-serif" }}>
+                    Department
+                  </span>
                   <span
+                    className="font-light text-base lg:text-xl leading-5"
                     style={{
                       fontFamily: "'Montserrat', sans-serif",
-                      fontWeight: 300,
-                      fontSize: '20px',
-                      lineHeight: '20px',
                       color: '#F5F2E9',
                     }}
                   >
@@ -264,21 +228,19 @@ export default function Tenders() {
 
                 {/* Estimated Value */}
                 <div
-                  className="flex justify-center items-center"
+                  className="flex justify-between lg:justify-center items-center flex-1 min-h-[56px] lg:h-[88px] px-4 lg:px-5 py-3 lg:py-6"
                   style={{
-                    flex: 1,
-                    height: '88px',
-                    padding: '24px 20px',
                     background: 'rgba(0, 0, 0, 0.4)',
                     border: '0.84px solid rgba(255, 255, 255, 0.1)',
                   }}
                 >
+                  <span className="lg:hidden text-sm text-gray-400" style={{ fontFamily: "'Inter', sans-serif" }}>
+                    Estimated Value
+                  </span>
                   <span
+                    className="font-light text-base lg:text-xl leading-5"
                     style={{
                       fontFamily: "'Montserrat', sans-serif",
-                      fontWeight: 300,
-                      fontSize: '20px',
-                      lineHeight: '20px',
                       color: '#F5F2E9',
                     }}
                   >
@@ -288,21 +250,19 @@ export default function Tenders() {
 
                 {/* Bid Closing Date */}
                 <div
-                  className="flex justify-center items-center"
+                  className="flex justify-between lg:justify-center items-center flex-1 min-h-[56px] lg:h-[88px] px-4 lg:px-5 py-3 lg:py-6"
                   style={{
-                    flex: 1,
-                    height: '88px',
-                    padding: '24px 20px',
                     background: 'rgba(0, 0, 0, 0.4)',
                     border: '0.84px solid rgba(255, 255, 255, 0.1)',
                   }}
                 >
+                  <span className="lg:hidden text-sm text-gray-400" style={{ fontFamily: "'Inter', sans-serif" }}>
+                    Bid Closing Date
+                  </span>
                   <span
+                    className="font-light text-base lg:text-xl leading-5"
                     style={{
                       fontFamily: "'Montserrat', sans-serif",
-                      fontWeight: 300,
-                      fontSize: '20px',
-                      lineHeight: '20px',
                       color: '#F5F2E9',
                     }}
                   >
@@ -312,11 +272,8 @@ export default function Tenders() {
 
                 {/* Download PDF Button */}
                 <div
-                  className="flex justify-center items-center"
+                  className="flex justify-center items-center flex-1 min-h-[72px] lg:h-[88px] px-4 lg:px-5 py-4 lg:py-6"
                   style={{
-                    flex: 1,
-                    height: '88px',
-                    padding: '24px 20px',
                     background: 'rgba(0, 0, 0, 0.4)',
                     border: '0.84px solid rgba(255, 255, 255, 0.1)',
                   }}
@@ -324,24 +281,16 @@ export default function Tenders() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex justify-center items-center"
+                    className="flex justify-center items-center w-full max-w-[171px] h-10 px-4 lg:px-6 py-2.5 rounded-lg"
                     style={{
-                      width: '171px',
-                      height: '40px',
-                      padding: '10px 24px',
                       background: 'rgba(255, 0, 4, 0.29)',
                       backdropFilter: 'blur(14.76px)',
-                      borderRadius: '8px',
                     }}
                   >
                     <span
+                      className="font-medium text-sm lg:text-base leading-5 text-center text-white whitespace-nowrap"
                       style={{
                         fontFamily: "'Montserrat', sans-serif",
-                        fontWeight: 500,
-                        fontSize: '16px',
-                        lineHeight: '125%',
-                        textAlign: 'center',
-                        color: '#FFFFFF',
                       }}
                     >
                       Download PDF
