@@ -357,7 +357,7 @@ const HeroSlider = () => {
         className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center"
         style={{
           zIndex: 5,
-          top: '5%',
+          top: '15%',
           transition: 'none',
         }}
       >
